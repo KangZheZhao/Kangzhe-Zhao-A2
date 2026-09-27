@@ -1,0 +1,20 @@
+{
+  "name": "prog2002-a2-charity-events-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Read-only charity events API and website server for PROG2002 A2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "check": "node --check server.js && node --check event_db.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
+  }
+}
+
