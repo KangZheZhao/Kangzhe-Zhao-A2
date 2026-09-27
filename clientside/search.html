@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search Sydney charity events by date, location and category.">
+  <title>Find events | Sydney Community Giving</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/js/common.js" defer></script>
+  <script src="/js/search.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/index.html" aria-label="Sydney Community Giving home">
+        <span class="brand-symbol" aria-hidden="true">S<span></span></span>
+        <span class="brand-name">Sydney<br>Community Giving</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/index.html">Home</a>
+        <a href="/search.html" aria-current="page">Find events</a>
+      </nav>
+      <a class="header-action" href="/index.html#our-story">Our purpose <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-banner">
+      <div class="container page-banner-inner">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> Explore what matters to you</p>
+          <h1>Find your next <em>good thing.</em></h1>
+          <p>Use one filter or combine several to discover current and upcoming charity events across Sydney.</p>
+        </div>
+        <div class="banner-symbol" aria-hidden="true">✳</div>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <div class="container">
+        <form id="search-form" class="filter-panel" role="search">
+          <div class="filter-heading"><div><p class="section-kicker">MAKE IT YOURS</p><h2>Search events</h2></div><p>Choose any combination of filters.</p></div>
+          <div class="filter-grid">
+            <div class="field"><label for="date">Date</label><input id="date" name="date" type="date"><small>Choose a specific event date</small></div>
+            <div class="field"><label for="location">Location</label><input id="location" name="location" type="search" maxlength="100" placeholder="e.g. Newtown or Barangaroo"><small>Venue, suburb or Sydney</small></div>
+            <div class="field"><label for="category">Category</label><select id="category" name="categoryId"><option value="">All categories</option></select><small>Choose an event type</small></div>
+          </div>
+          <p id="category-status" class="status-message status-error" role="status" aria-live="polite"></p>
+          <div class="filter-actions">
+            <button class="button button-primary" type="submit">Search events <span aria-hidden="true">↗</span></button>
+            <button class="button button-outline" id="clear-filters" type="button">Clear filters</button>
+          </div>
+        </form>
+
+        <div class="results-heading"><div><p class="section-kicker">DISCOVER</p><h2>Matching events</h2></div><p id="result-count" class="result-count"></p></div>
+        <p id="search-status" class="status-message" role="status" aria-live="polite">Loading events…</p>
+        <div id="search-results" class="event-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>Sydney Community Giving</strong><p>Community events that bring Sydney together.</p></div>
+      <div><span>Questions?</span><a href="mailto:hello@sydneycommunitygiving.example">hello@sydneycommunitygiving.example</a></div>
+      <p class="footer-note">A fictional student project for PROG2002.</p>
+    </div>
+  </footer>
+</body>
+</html>
