@@ -59,36 +59,44 @@
   }
 
   function createEventRow(event) {
-    const article = element('article', 'event-row');
-    const link = element('a', 'event-row-link');
+    const tones = {
+      'Fun Run': 'run',
+      'Community Market': 'market',
+      'Gala & Dinner': 'dinner',
+      'Arts & Music': 'arts'
+    };
+    const article = element('article', 'event-card');
+    article.dataset.tone = tones[event.category_name] || 'default';
+    const link = element('a', 'event-card-link');
     link.href = `/event.html?id=${encodeURIComponent(event.id)}`;
     link.setAttribute('aria-label', `View ${event.name} event details`);
 
-    const date = element('time', 'row-date');
+    const media = element('div', 'card-media');
+    const image = element('img', 'card-image');
+    image.src = eventImage(event).src;
+    image.alt = '';
+    image.loading = 'lazy';
+    const date = element('time', 'card-date');
     date.dateTime = event.event_date;
     date.append(
       element('span', 'date-day', formatDate(event.event_date, { day: '2-digit' })),
       element('span', 'date-month', formatDate(event.event_date, { month: 'short', year: 'numeric' }))
     );
+    media.append(image, date);
 
-    const image = element('img', 'row-image');
-    image.src = eventImage(event).src;
-    image.alt = '';
-    image.loading = 'lazy';
-
-    const main = element('div', 'row-main');
-    main.append(
-      element('p', 'row-category', event.category_name),
-      element('h3', 'row-title', event.name),
-      element('p', 'row-description', event.short_description)
+    const body = element('div', 'card-body');
+    const bottom = element('div', 'card-bottom');
+    bottom.append(
+      element('span', 'card-location', `${event.suburb} · ${event.start_time}`),
+      element('strong', 'card-price', Number(event.ticket_price) === 0 ? 'Free' : formatMoney(event.ticket_price))
     );
-
-    const side = element('div', 'row-side');
-    side.append(
-      element('span', 'row-place', `${event.suburb}, ${event.start_time}`),
-      element('strong', 'row-price', Number(event.ticket_price) === 0 ? 'Free' : formatMoney(event.ticket_price))
+    body.append(
+      element('p', 'card-category', event.category_name),
+      element('h3', 'card-title', event.name),
+      element('p', 'card-description', event.short_description),
+      bottom
     );
-    link.append(date, image, main, side);
+    link.append(media, body);
     article.append(link);
     return article;
   }
@@ -102,15 +110,26 @@
     const image = element('img');
     image.src = eventImage(event).src;
     image.alt = '';
-    photo.append(image);
+    const badge = element('time', 'featured-date-badge');
+    badge.dateTime = event.event_date;
+    badge.append(
+      element('span', 'date-day', formatDate(event.event_date, { day: '2-digit' })),
+      element('span', 'date-month', formatDate(event.event_date, { month: 'short', year: 'numeric' }))
+    );
+    photo.append(image, badge);
     const copy = element('div', 'featured-copy');
+    const meta = element('div', 'featured-meta');
+    meta.append(
+      element('span', 'featured-location', `${event.venue}, ${event.suburb}`),
+      element('strong', 'featured-price', Number(event.ticket_price) === 0 ? 'Free' : formatMoney(event.ticket_price))
+    );
     copy.append(
-      element('p', 'featured-label', 'Next event'),
+      element('p', 'featured-label', `Next event · ${event.category_name}`),
       element('p', 'featured-date', `${formatDate(event.event_date)} at ${event.start_time}`),
       element('h3', 'featured-title', event.name),
       element('p', 'featured-description', event.short_description),
-      element('p', 'featured-location', `${event.venue}, ${event.suburb}`),
-      element('span', 'featured-action', 'View event')
+      meta,
+      element('span', 'featured-action', 'See event details')
     );
     link.append(photo, copy);
     article.append(link);
