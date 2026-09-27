@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check event_db.js"
+    "check": "node --check server.js && node --check event_db.js",
+    "smoke": "node test/smoke.mjs"
   },
   "engines": {
     "node": ">=18"
@@ -17,4 +18,3 @@
     "mysql2": "^3.14.0"
   }
 }
-
