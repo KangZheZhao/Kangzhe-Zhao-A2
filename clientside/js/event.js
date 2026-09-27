@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     setText('event-short-description', event.short_description);
     setText('event-description', event.description);
     setText('event-purpose', event.purpose);
-    setText('organisation-mission', event.organisation_mission);
     setText('event-date-time', `${window.CharitySite.formatDate(event.event_date)}, ${event.start_time}–${event.end_time}`);
     setText('event-location', `${event.venue}, ${event.suburb}, ${event.city}`);
     setText('event-ticket', Number(event.ticket_price) === 0 ? 'Free' : window.CharitySite.formatMoney(event.ticket_price));
@@ -27,9 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setText('amount-raised', window.CharitySite.formatMoney(event.raised_amount));
     setText('amount-goal', window.CharitySite.formatMoney(event.goal_amount));
 
-    const image = window.CharitySite.eventImage(event);
-    document.getElementById('event-image').src = image.src;
-    document.getElementById('event-image').alt = image.alt;
+    document.getElementById('event-image').src = `/assets/${event.image_file}`;
 
     const percentage = Math.round(Number(event.raised_amount) / Number(event.goal_amount) * 100);
     const visiblePercentage = Math.min(Math.max(percentage, 0), 100);

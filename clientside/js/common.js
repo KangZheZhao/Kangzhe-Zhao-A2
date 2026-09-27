@@ -38,19 +38,6 @@
     return money.format(Number(value) || 0);
   }
 
-  function eventImage(event) {
-    if (event.name.toLowerCase().includes('art')) {
-      return { src: '/assets/art-gallery.jpg', alt: 'Art gallery interior' };
-    }
-    const images = {
-      'Fun Run': { src: '/assets/community-run.jpg', alt: 'Runners in Sydney' },
-      'Gala & Dinner': { src: '/assets/dinner.jpg', alt: 'Dinner table' },
-      'Arts & Music': { src: '/assets/concert.jpg', alt: 'Live musician' },
-      'Community Market': { src: '/assets/market.jpg', alt: 'Sydney market' }
-    };
-    return images[event.category_name] || { src: '/assets/sydney-harbour.jpg', alt: 'Sydney Harbour' };
-  }
-
   function element(tag, className, value) {
     const node = document.createElement(tag);
     if (className) node.className = className;
@@ -73,7 +60,7 @@
 
     const media = element('div', 'card-media');
     const image = element('img', 'card-image');
-    image.src = eventImage(event).src;
+    image.src = `/assets/${event.image_file}`;
     image.alt = '';
     image.loading = 'lazy';
     const date = element('time', 'card-date');
@@ -108,7 +95,7 @@
     link.setAttribute('aria-label', `View ${event.name} event details`);
     const photo = element('div', 'featured-photo');
     const image = element('img');
-    image.src = eventImage(event).src;
+    image.src = `/assets/${event.image_file}`;
     image.alt = '';
     const badge = element('time', 'featured-date-badge');
     badge.dateTime = event.event_date;
@@ -136,5 +123,5 @@
     return article;
   }
 
-  window.CharitySite = { requestJSON, formatDate, formatMoney, eventImage, createEventRow, createFeaturedEvent };
+  window.CharitySite = { requestJSON, formatDate, formatMoney, createEventRow, createFeaturedEvent };
 })();

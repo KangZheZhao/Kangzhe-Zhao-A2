@@ -48,7 +48,7 @@ function escapeLike(value) {
 }
 
 const summaryColumns = `
-  e.id, e.name, e.short_description, e.event_date,
+  e.id, e.name, e.image_file, e.short_description, e.event_date,
   TIME_FORMAT(e.start_time, '%H:%i') AS start_time,
   TIME_FORMAT(e.end_time, '%H:%i') AS end_time,
   e.venue, e.suburb, e.city, e.ticket_price,
@@ -124,8 +124,7 @@ app.get('/api/events/:id', async (request, response) => {
   try {
     const [rows] = await pool.execute(`
       SELECT ${summaryColumns}, e.purpose, e.description,
-        e.goal_amount, e.raised_amount, e.organisation_id,
-        o.mission AS organisation_mission, o.contact_email
+        e.goal_amount, e.raised_amount
       FROM events e
       JOIN categories c ON c.id = e.category_id
       JOIN organisations o ON o.id = e.organisation_id
