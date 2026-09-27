@@ -1,59 +1,51 @@
 # Sydney Community Giving
 
-A Sydney charity events website for PROG2002 Assessment 2. MySQL stores the events, Express serves a read-only API, and four HTML pages use plain JavaScript to display the results.
+A charity events site for PROG2002 A2. The event data is in MySQL, the API uses Express, and the pages are plain HTML, CSS and JavaScript.
 
-## Project layout
+## What's where
 
-- `api/`: Express server, `event_db.js`, SQL setup, package files and API smoke test.
-- `clientside/`: home, search, event detail and about pages; CSS, JavaScript and local images. Image and font sources are in `clientside/assets/CREDITS.md`.
-- `report/`: the completed project report based on the supplied template. Student identity is left blank; the document uses Arial 12 pt and 1.5 line spacing.
-- `docs/`: brief check, report guide, video outline and submission checklist.
+- `api/` has the server, SQL file and a small smoke test.
+- `clientside/` has the four pages, scripts, styles and pictures.
+- `report/` has the Word report. The student name and ID fields are blank.
+- `docs/` has notes for the report, demo and hand-in.
 
-## Requirements
+## Run it locally
 
-- Node.js 18 or later.
-- MySQL 8.0 or later, running locally.
-- A MySQL account allowed to import the database and a separate account allowed to read it.
+You need Node.js 18+, MySQL 8+ and a MySQL account that can import the database.
 
-## Set up and run
-
-1. Import the sample database from the repository root:
+1. From the project folder, import the sample data:
 
    ```sh
    mysql -u root -p < api/charityevents_db.sql
    ```
 
-   The script creates `charityevents_db` with an organisation, four categories and ten events. Eight dates are upcoming, one event is past and one is suspended. The dates are set relative to import day. Re-importing replaces the three tables and their data.
+   This makes three tables and ten events. Re-importing replaces those tables, so don't use it on a database you want to keep.
 
-2. Create a read-only application account in MySQL. Choose your own password, then run these statements as an administrator:
+2. Make an account for the site to read from. Pick your own password:
 
    ```sql
    CREATE USER 'charity_app'@'127.0.0.1' IDENTIFIED BY 'your_local_password';
    GRANT SELECT ON charityevents_db.* TO 'charity_app'@'127.0.0.1';
    ```
 
-3. Copy `api/.env.example` to `api/.env` and set that account's password and the local database host and port. `.env` is ignored by Git.
-4. From `api/`, run `npm ci`, then `npm start`.
-5. Open `http://localhost:3000/`. The Express server serves both the API and the sibling `clientside/` directory; keep those two directories next to each other after extracting the submission ZIP files.
+3. Copy `api/.env.example` to `api/.env` and put the password there. Check the host and port too.
+4. In `api/`, run `npm ci` and then `npm start`.
+5. Open `http://localhost:3000/`.
 
-Pages: `/index.html`, `/search.html`, `/event.html?id=1` and `/about.html`.
+Keep `api/` and `clientside/` next to each other. The server also serves the pages and pictures.
 
-## API
+## Pages and API
 
-| Method and path | Purpose |
-| --- | --- |
-| `GET /api/events` | List non-suspended events that are current or upcoming in Sydney local time. Optional `date=YYYY-MM-DD`, `location=text`, and `categoryId=number` filters may be combined. |
-| `GET /api/categories` | List category IDs and names for the search form. |
-| `GET /api/events/:id` | Return one non-suspended event with its full description, ticket price and fundraising figures. |
+The pages are `/index.html`, `/search.html`, `/event.html?id=1` and `/about.html`.
 
-All routes return JSON. Invalid inputs return 400, an unknown or suspended event returns 404, and database errors return 500. Search values are checked before they reach parameterised SQL queries. Register shows the required under-construction alert; there are no registration or payment endpoints.
+- `GET /api/events` gives the current and upcoming events. You can add `date`, `location` or `categoryId` to filter the list.
+- `GET /api/categories` fills the category menu.
+- `GET /api/events/:id` gives one event's details.
 
-## Verify
+The Register button just shows the under-construction message. It doesn't save anyone's details or take payments.
 
-With the server running, run `npm run smoke` in `api/`. It checks the event list, categories, filters, detail route and error responses. Check the four pages at desktop and phone widths, including the Register alert.
+## Quick check
 
-## Submission reminders
+With the server running, use `npm run smoke` in `api/`. Also click through the pages on a computer and phone-sized screen. Try a search that finds nothing and one that combines filters.
 
-Run `scripts/package-submission.sh` from the repository root to build both ZIP files in `output/`. Pass the student username as its first argument; without it, the filenames use `username` as a placeholder. Extract the two archives side by side so that `api/` can serve `clientside/`.
-
-The report, separate `report/GenAI Use Declaration.txt`, private repository link and video are outside the two ZIP files. The ZIP files exclude `.env`, `.local/`, `node_modules/` and Git internals.
+For the two ZIP files, run `scripts/package-submission.sh` from this folder. Give it the student username as the first argument. The files go in `output/`; the report, video and repository link are separate hand-in items. The ZIP files leave out `.env`, `.local/`, `node_modules/` and Git files.

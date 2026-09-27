@@ -1,0 +1,5 @@
+GenAI Use Declaration
+
+I acknowledge that I have used GenAI tools to complete this assessment. I used OpenAI Codex to brainstorm ideas, generate and revise website code, draft the project report, format the document, and prepare the submission package.
+
+Generating code and drafting the report exceed the Level 2 GenAI uses permitted for a student submission in the Assessment Brief.

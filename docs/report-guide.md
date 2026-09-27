@@ -1,52 +1,14 @@
-# Project report notes
+# Report notes
 
-`report/PROG2002 A2 Report.docx` follows the supplied headings and uses Arial 12 pt with 1.5 line spacing. Student ID, Last Name and First Name are blank. The report describes the implemented website and includes a data relationship diagram and API table.
+The Word report is in `report/PROG2002 A2 Report.docx`. It follows the supplied headings. The project title is filled in, but the student name and ID are blank.
 
-The report is grounded in these project files:
+If you use this project to study, make sure you can explain these parts in your own words:
 
-| Template section | Evidence to inspect and explain |
-| --- | --- |
-| Introduction / Motivation | The organisation's purpose on the home and About pages; the event types and causes represented in the SQL data. |
-| Problem Statement | Visitors need to compare events by date, place, ticket price and cause. Past and suspended events must stay out of public results. |
-| Solution | Follow one `fetch` from a page script to an Express route, a MySQL query, its JSON response and the DOM update. Register currently displays only the specified alert. |
-| Web UX | The four-page navigation, date/location/category filters, Clear Filters button, empty and error messages, event details, mobile layout and keyboard focus. |
-| Data Schema | In `api/charityevents_db.sql`, identify each table's primary key, the two foreign keys in `events`, and the event fields used by the pages, including `image_file`. |
-| API design | Explain the three GET routes in `api/server.js`. Search uses optional query parameters; these GET requests have no request body. POST, PUT and DELETE are outside A2. |
+- Why someone would search for an event by date, place or category.
+- How a page calls the API with `fetch` and puts the result on screen.
+- Why finished and suspended events stay out of the public list.
+- What the three database tables are for. Each event has an organisation and a category.
+- What each GET route returns. The search values go in the URL; these requests have no body.
+- What happens when someone clicks Register. It is only a demo alert right now.
 
-The project title is filled in. The GenAI declaration is a separate TXT file in `report/`; it is not part of the Word report. The diagram and API descriptions should be checked again if the implementation changes.
-
-## Relationship diagram for study
-
-```mermaid
-erDiagram
-    ORGANISATIONS ||--o{ EVENTS : organises
-    CATEGORIES ||--o{ EVENTS : classifies
-    ORGANISATIONS {
-        int id PK
-        varchar name
-        varchar mission
-        varchar contact_email
-    }
-    CATEGORIES {
-        int id PK
-        varchar name
-    }
-    EVENTS {
-        int id PK
-        int organisation_id FK
-        int category_id FK
-        varchar name
-        varchar image_file
-        varchar purpose
-        text description
-        date event_date
-        time start_time
-        time end_time
-        varchar venue
-        varchar suburb
-        decimal ticket_price
-        decimal goal_amount
-        decimal raised_amount
-        boolean is_suspended
-    }
-```
+The diagram in the report shows `organisations` and `categories` both linked to `events`. Check it again if you change the SQL tables. Same for the API section if you change the server routes.
