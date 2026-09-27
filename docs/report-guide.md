@@ -1,8 +1,8 @@
-# Report preparation guide
+# Report teaching example
 
-`report/PROG2002 A2 Report.docx` keeps the supplied headings and is set to Arial 12 pt with 1.5 line spacing. The answer sections are blank.
+`report/PROG2002 A2 Report.docx` is a completed instructor example. It follows the supplied headings, uses Arial 12 pt with 1.5 line spacing, and leaves Student ID, Last Name and First Name blank. The three-page report explains the current website and includes a data relationship diagram and API table.
 
-Use the files and live pages below as evidence when preparing each answer:
+The example is grounded in these project files:
 
 | Template section | Evidence to inspect and explain |
 | --- | --- |
@@ -13,7 +13,7 @@ Use the files and live pages below as evidence when preparing each answer:
 | Data Schema | In `api/charityevents_db.sql`, identify each table's primary key, the two foreign keys in `events`, and the event fields used by the pages, including `image_file`. |
 | API design | Explain the three GET routes in `api/server.js`. Search uses optional query parameters; these GET requests have no request body. POST, PUT and DELETE are outside A2. |
 
-Add the student's project title, ID and name. Check diagrams and screenshots against the final build. Use `docs/submission-checklist.md` for the declaration and other submission items.
+The project title is filled in. The GenAI declaration describes the instructor example; it is not a declaration for another author. The diagram and API descriptions should be checked again if the implementation changes.
 
 ## Relationship diagram for study
 

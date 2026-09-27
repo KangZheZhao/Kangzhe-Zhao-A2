@@ -1,6 +1,6 @@
 # Submission checklist
 
-- [ ] Complete `report/PROG2002 A2 Report.docx` in the student's own words, with student ID, name, project title, diagrams and the required GenAI-use declaration.
+- [x] Prepare an instructor example report with the project title, design explanations, relationship diagram, API table and a declaration describing the example. Student ID and name remain blank.
 - [ ] Import `api/charityevents_db.sql` on a clean MySQL instance and run the API and website from the instructions in `README.md`.
 - [ ] Run `npm run smoke` in `api/` and manually check desktop and phone layouts.
 - [ ] Push the real sequence of progress commits to a private GitHub repository, then verify that the marker can access its link.
@@ -8,4 +8,4 @@
 - [ ] Record and upload a personal demonstration of no more than 15 minutes to SCU OneDrive. Test the sharing link from a separate browser session.
 - [ ] Submit the completed report, both ZIP files, the repository link and the video file/link through Blackboard.
 
-The brief permits GenAI for limited planning, editing and layout work, but requires the submitted report and code to be the student's own. Codex has assisted with this project, so the final GenAI statement must describe the actual tools and purposes used. The student must review and write the final submission accordingly.
+This repository is a teaching example. Its declaration records how the example was prepared; any student submission needs a declaration that reflects the student's own work and tool use under the assessment brief.

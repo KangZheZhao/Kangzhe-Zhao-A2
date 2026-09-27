@@ -14,6 +14,6 @@ This table maps the brief to files that can be checked in the running project.
 | pp. 3-4 | Node.js/Express GET endpoints consumed with browser `fetch` and DOM updates | `api/server.js`, `clientside/js/` | Implemented |
 | pp. 5-6 | Regular GitHub commits and private repository link | Repository commit history | Commits exist; marker access to the private repository still needs checking |
 | p. 6 | Two named ZIP files and importable SQL | `scripts/package-submission.sh`, `output/` | Built with `username` placeholder until the student supplies the real username |
-| pp. 5-7 | Completed report, personal video of no more than 15 minutes, OneDrive link, GenAI declaration | `report/`, `docs/demo-outline.md`, `docs/submission-checklist.md` | Still to be completed by the student |
+| pp. 5-7 | Completed report, personal video of no more than 15 minutes, OneDrive link, GenAI declaration | `report/`, `docs/demo-outline.md`, `docs/submission-checklist.md` | Instructor example report and its declaration complete; video and OneDrive link not created |
 
-The report template is blank. This checklist records implementation status, not completion of the student's report or video.
+The report is an instructor example with blank student identity fields. This checklist records the sample project's state; it does not claim that a personal video or student submission has been completed.
