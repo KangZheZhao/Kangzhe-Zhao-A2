@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const events = await window.CharitySite.requestJSON(url);
       if (requestNumber !== latestRequest) return;
-      results.replaceChildren(...events.map(window.CharitySite.createEventCard));
+      results.replaceChildren(...events.map(window.CharitySite.createEventRow));
       count.textContent = `${events.length} ${events.length === 1 ? 'event' : 'events'} found`;
       status.textContent = events.length === 0
         ? 'No events match those filters. Try another date, location or category.'

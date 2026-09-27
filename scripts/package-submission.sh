@@ -18,10 +18,15 @@ api_archive="output/${archive_prefix}A2-api.zip"
 rm -f "$client_archive" "$api_archive"
 
 zip -q "$client_archive" \
-  clientside/index.html clientside/search.html clientside/event.html \
+  clientside/index.html clientside/search.html clientside/event.html clientside/about.html \
   clientside/styles.css \
   clientside/js/common.js clientside/js/home.js \
-  clientside/js/search.js clientside/js/event.js
+  clientside/js/search.js clientside/js/event.js \
+  clientside/assets/sydney-harbour.jpg clientside/assets/community-run.jpg \
+  clientside/assets/market.jpg clientside/assets/dinner.jpg \
+  clientside/assets/concert.jpg clientside/assets/art-gallery.jpg \
+  clientside/assets/BarlowCondensed-Bold.ttf clientside/assets/BarlowCondensed-Black.ttf \
+  clientside/assets/OFL.txt clientside/assets/CREDITS.md
 
 zip -q "$api_archive" \
   README.md api/.env.example api/package.json api/package-lock.json \

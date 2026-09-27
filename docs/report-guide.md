@@ -9,7 +9,7 @@ Use this guide to inspect the working project before answering each template pro
 | Introduction / Motivation | The Sydney Community Giving scenario, the organisation message on the home page, and why local events can connect supporters with causes. |
 | Problem Statement | The need for a public way to discover relevant events and view the key details in one place. |
 | Solution | The path from browser `fetch` to Express GET route, MySQL query, JSON response and DOM update. Mention that registration is deliberately an under-construction alert for A2. |
-| Web UX | Navigation on all three pages, filter controls, clear button, event cards, loading/empty/error messages, mobile layout and keyboard focus. |
+| Web UX | Navigation on all four pages, a dated event programme, filter controls, clear button, loading/empty/error messages, event details and the registration preview, mobile layout and keyboard focus. The first three pages satisfy the required home, search and event flows; About adds organisation context. |
 | Data Schema | The `organisations`, `categories` and `events` tables in `api/charityevents_db.sql`; identify the primary keys and the two foreign keys in `events`. |
 | API design | `GET /api/events`, `GET /api/categories`, `GET /api/events/:id`. For the search endpoint, describe optional query parameters and JSON results. GET requests have no request body here; POST/PUT/DELETE are outside A2. |
 
@@ -45,4 +45,3 @@ erDiagram
         boolean is_suspended
     }
 ```
-

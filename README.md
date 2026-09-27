@@ -1,11 +1,11 @@
 # Sydney Community Giving
 
-A fictional Sydney charity events website for PROG2002 Assessment 2. The site uses a MySQL database, a read-only Node.js and Express API, and three pages built with HTML, CSS and vanilla JavaScript.
+A fictional Sydney charity events website for PROG2002 Assessment 2. The site uses a MySQL database, a read-only Node.js and Express API, and four pages built with HTML, CSS and vanilla JavaScript.
 
 ## Project layout
 
 - `api/`: Express server, `event_db.js`, SQL setup, package files and API smoke test.
-- `clientside/`: home, search and event detail pages with their CSS and DOM scripts.
+- `clientside/`: home, search, event detail and about pages with CSS, DOM scripts and local photography. Asset sources and licenses are recorded in `clientside/assets/CREDITS.md`.
 - `report/`: the assessment report template, formatted in Arial 12 pt with 1.5 line spacing. It still needs the student's own answers and identity details.
 - `docs/`: development and submission notes.
 
@@ -36,7 +36,7 @@ A fictional Sydney charity events website for PROG2002 Assessment 2. The site us
 4. From `api/`, run `npm ci`, then `npm start`.
 5. Open `http://localhost:3000/`. The Express server serves both the API and the sibling `clientside/` directory; keep those two directories next to each other after extracting the submission ZIP files.
 
-The home page is `/index.html`, the search page is `/search.html`, and an event detail page is `/event.html?id=1`.
+The home page is `/index.html`, the search page is `/search.html`, an event detail page is `/event.html?id=1`, and the organisation page is `/about.html`.
 
 On the current development Mac, an official MySQL 8.4 archive was unpacked into the ignored `.local/` directory. `scripts/local-mysql.sh start` and `scripts/local-mysql.sh stop` manage that local instance; these files are not needed by a marker who already has MySQL installed. The local root password is stored only in ignored `.local/admin-password.txt`.
 
@@ -48,11 +48,11 @@ On the current development Mac, an official MySQL 8.4 archive was unpacked into 
 | `GET /api/categories` | List category IDs and names for the search form. |
 | `GET /api/events/:id` | Return one non-suspended event with its full description, ticket price and fundraising figures. |
 
-The API returns JSON. Invalid inputs return HTTP 400, unknown or suspended events return HTTP 404, and server/database failures return HTTP 500. Search input is validated and used in parameterised SQL queries. Registration is represented by an under-construction alert for this assessment; there are no ticket purchase or write endpoints.
+The API returns JSON. Invalid inputs return HTTP 400, unknown or suspended events return HTTP 404, and server/database failures return HTTP 500. Search input is validated and used in parameterised SQL queries. The detail page presents registration fields, but Register only shows the required under-construction alert; no data is saved and there are no ticket purchase or write endpoints.
 
 ## Verify
 
-With the server running, run `npm run smoke` from `api/`. It checks categories, event visibility, search filters, detail data and error responses. Also manually check the three pages at desktop and phone widths and confirm that the Register button shows the required message.
+With the server running, run `npm run smoke` from `api/`. It checks categories, event visibility, search filters, detail data and error responses. Also manually check the four pages at desktop and phone widths and confirm that the Register button shows the required message.
 
 ## Submission reminders
 
