@@ -13,7 +13,7 @@ The report is grounded in these project files:
 | Data Schema | In `api/charityevents_db.sql`, identify each table's primary key, the two foreign keys in `events`, and the event fields used by the pages, including `image_file`. |
 | API design | Explain the three GET routes in `api/server.js`. Search uses optional query parameters; these GET requests have no request body. POST, PUT and DELETE are outside A2. |
 
-The project title is filled in. The GenAI declaration records the tools used to prepare the report. The diagram and API descriptions should be checked again if the implementation changes.
+The project title is filled in. The GenAI declaration records actual Codex use, including report and code drafting beyond the brief's permitted student uses. `docs/genai-declaration-guide.md` provides the brief's wording for students to complete according to their own work. The diagram and API descriptions should be checked again if the implementation changes.
 
 ## Relationship diagram for study
 
