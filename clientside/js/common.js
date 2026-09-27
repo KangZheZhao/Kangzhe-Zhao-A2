@@ -85,9 +85,8 @@
 
     const side = element('div', 'row-side');
     side.append(
-      element('span', 'row-place', `${event.suburb} · ${event.start_time}`),
-      element('strong', 'row-price', Number(event.ticket_price) === 0 ? 'Free' : formatMoney(event.ticket_price)),
-      element('span', 'row-arrow', '↗')
+      element('span', 'row-place', `${event.suburb}, ${event.start_time}`),
+      element('strong', 'row-price', Number(event.ticket_price) === 0 ? 'Free' : formatMoney(event.ticket_price))
     );
     link.append(date, image, main, side);
     article.append(link);
@@ -106,12 +105,12 @@
     photo.append(image);
     const copy = element('div', 'featured-copy');
     copy.append(
-      element('p', 'featured-label', 'Next on the calendar'),
-      element('p', 'featured-date', `${formatDate(event.event_date)} · ${event.start_time}`),
+      element('p', 'featured-label', 'Next event'),
+      element('p', 'featured-date', `${formatDate(event.event_date)} at ${event.start_time}`),
       element('h3', 'featured-title', event.name),
       element('p', 'featured-description', event.short_description),
       element('p', 'featured-location', `${event.venue}, ${event.suburb}`),
-      element('span', 'featured-action', 'Event details  ↗')
+      element('span', 'featured-action', 'View event')
     );
     link.append(photo, copy);
     article.append(link);

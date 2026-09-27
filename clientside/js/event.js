@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setText('event-description', event.description);
     setText('event-purpose', event.purpose);
     setText('organisation-mission', event.organisation_mission);
-    setText('event-date-time', `${window.CharitySite.formatDate(event.event_date)} · ${event.start_time}–${event.end_time}`);
+    setText('event-date-time', `${window.CharitySite.formatDate(event.event_date)}, ${event.start_time}–${event.end_time}`);
     setText('event-location', `${event.venue}, ${event.suburb}, ${event.city}`);
     setText('event-ticket', Number(event.ticket_price) === 0 ? 'Free' : window.CharitySite.formatMoney(event.ticket_price));
     setText('event-organiser', event.organisation_name);

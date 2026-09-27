@@ -12,7 +12,7 @@ This is a development checklist against the supplied 11-page assessment brief. I
 | pp. 2, 4 | Menu on every page | All four HTML files | Implemented |
 | p. 3 | `charityevents_db`, connected tables, keys, at least eight sample events and several categories, `event_db.js` | `api/charityevents_db.sql`, `api/event_db.js` | Implemented |
 | pp. 3-4 | Node.js/Express GET endpoints consumed with browser `fetch` and DOM updates | `api/server.js`, `clientside/js/` | Implemented |
-| pp. 5-6 | Regular GitHub commits and private repository link | Repository commit history | Four initial progress commits plus design revision; access for the marker must still be checked by the student |
+| pp. 5-6 | Regular GitHub commits and private repository link | Repository commit history | Four initial progress commits plus visual revisions; access for the marker must still be checked by the student |
 | p. 6 | Two named ZIP files and importable SQL | `scripts/package-submission.sh`, `output/` | Built with `username` placeholder until the student supplies the real username |
 | pp. 5-7 | Completed report, personal video of no more than 15 minutes, OneDrive link, GenAI declaration | `report/`, `docs/demo-outline.md`, `docs/submission-checklist.md` | Student must complete and submit these personally |
 

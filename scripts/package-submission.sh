@@ -25,7 +25,7 @@ zip -q "$client_archive" \
   clientside/assets/sydney-harbour.jpg clientside/assets/community-run.jpg \
   clientside/assets/market.jpg clientside/assets/dinner.jpg \
   clientside/assets/concert.jpg clientside/assets/art-gallery.jpg \
-  clientside/assets/BarlowCondensed-Bold.ttf clientside/assets/BarlowCondensed-Black.ttf \
+  clientside/assets/BarlowCondensed-Bold.ttf \
   clientside/assets/OFL.txt clientside/assets/CREDITS.md
 
 zip -q "$api_archive" \

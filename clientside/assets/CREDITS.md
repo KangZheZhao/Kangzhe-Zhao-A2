@@ -13,4 +13,4 @@ The site bundles photographs so it works without a third-party image service. Th
 
 These photographs are used under the Unsplash License: https://unsplash.com/license
 
-`BarlowCondensed-Bold.ttf` and `BarlowCondensed-Black.ttf` come from https://github.com/google/fonts/tree/main/ofl/barlowcondensed . Copyright 2017 The Barlow Project Authors. They are licensed under the SIL Open Font License 1.1; see `OFL.txt` in this directory.
+`BarlowCondensed-Bold.ttf` comes from https://github.com/google/fonts/tree/main/ofl/barlowcondensed . Copyright 2017 The Barlow Project Authors. It is licensed under the SIL Open Font License 1.1; see `OFL.txt` in this directory.

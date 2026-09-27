@@ -14,7 +14,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="/index.html" aria-label="Sydney Community Giving home">
-        <span class="brand-mark" aria-hidden="true">SCG<span class="brand-dot">.</span></span>
+        <span class="brand-mark" aria-hidden="true">SCG</span>
         <span class="brand-name">Sydney<br>Community Giving</span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
@@ -22,7 +22,7 @@
         <a href="/search.html" aria-current="page">Events</a>
         <a href="/about.html">About</a>
       </nav>
-      <a class="header-cta" href="/about.html">Our story <span aria-hidden="true">↗</span></a>
+      <a class="header-cta" href="/about.html">About us</a>
     </div>
   </header>
 
@@ -30,9 +30,8 @@
     <section class="search-intro" aria-labelledby="search-title">
       <div class="container search-intro-grid">
         <div>
-          <p class="section-overline">Sydney event finder</p>
-          <h1 id="search-title">FIND YOUR<br>NEXT <span>THING.</span></h1>
-          <p>Pick a day, a part of town, or the kind of event you enjoy. You can combine filters to narrow the list.</p>
+          <h1 id="search-title">Find an event that fits your day.</h1>
+          <p>Search by date, suburb or event type. Use one filter or combine them.</p>
         </div>
         <img src="/assets/market.jpg" alt="People shopping at a produce market in Sydney">
       </div>
@@ -41,17 +40,17 @@
     <section class="search-section" aria-label="Search events">
       <div class="container">
         <form id="search-form" class="filter-form" role="search">
-          <div class="filter-form-top"><h2>Set your plans</h2><p>Search current and upcoming events</p></div>
+          <div class="filter-form-top"><h2>Search events</h2><p>Current and upcoming in Sydney</p></div>
           <div class="filter-fields">
-            <div class="field"><label for="date">When</label><input id="date" name="date" type="date"></div>
-            <div class="field"><label for="location">Where</label><input id="location" name="location" type="search" maxlength="100" placeholder="Suburb or venue"></div>
-            <div class="field"><label for="category">What</label><select id="category" name="categoryId"><option value="">All categories</option></select></div>
-            <button class="button button-blue filter-submit" type="submit">Show events <span aria-hidden="true">↗</span></button>
+            <div class="field"><label for="date">Date</label><input id="date" name="date" type="date"></div>
+            <div class="field"><label for="location">Location</label><input id="location" name="location" type="search" maxlength="100" placeholder="Suburb or venue"></div>
+            <div class="field"><label for="category">Category</label><select id="category" name="categoryId"><option value="">All categories</option></select></div>
+            <button class="button button-primary filter-submit" type="submit">Search</button>
           </div>
           <div class="filter-form-bottom"><button id="clear-filters" class="clear-button" type="button">Clear filters</button><p id="category-status" class="status-message status-error" role="status" aria-live="polite"></p></div>
         </form>
 
-        <div class="results-heading"><h2>THE LINE-UP<span class="heading-dot">.</span></h2><p id="result-count" aria-live="polite"></p></div>
+        <div class="results-heading"><h2>Results</h2><p id="result-count" aria-live="polite"></p></div>
         <p id="search-status" class="status-message" role="status" aria-live="polite">Loading events…</p>
         <div id="search-results" class="event-list" aria-live="polite"></div>
       </div>
@@ -60,9 +59,9 @@
 
   <footer class="site-footer">
     <div class="container footer-grid">
-      <div><a class="footer-brand" href="/index.html">SCG<span>.</span></a><p>Local events. Local causes. A more connected Sydney.</p></div>
+      <div><a class="footer-brand" href="/index.html">Sydney Community Giving</a><p>Local events for local causes.</p></div>
       <nav aria-label="Footer navigation"><a href="/index.html">Home</a><a href="/search.html">Events</a><a href="/about.html">About</a></nav>
-      <div><p>Questions or ideas?</p><a href="mailto:hello@sydneycommunitygiving.example">hello@sydneycommunitygiving.example</a><p>Sydney, NSW</p></div>
+      <div><p>Based in Sydney, NSW</p><p>Bringing people together through local events.</p></div>
     </div>
     <div class="container footer-base"><span>© Sydney Community Giving</span></div>
   </footer>
