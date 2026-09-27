@@ -1,6 +1,6 @@
 # Submission checklist
 
-- [x] Prepare an instructor example report with the project title, design explanations, relationship diagram, API table and a declaration describing the example. Student ID and name remain blank.
+- [x] Complete the project report with the project title, design explanations, relationship diagram, API table and GenAI-use declaration. Student ID and name remain blank.
 - [ ] Import `api/charityevents_db.sql` on a clean MySQL instance and run the API and website from the instructions in `README.md`.
 - [ ] Run `npm run smoke` in `api/` and manually check desktop and phone layouts.
 - [ ] Push the real sequence of progress commits to a private GitHub repository, then verify that the marker can access its link.
@@ -8,4 +8,4 @@
 - [ ] Record and upload a personal demonstration of no more than 15 minutes to SCU OneDrive. Test the sharing link from a separate browser session.
 - [ ] Submit the completed report, both ZIP files, the repository link and the video file/link through Blackboard.
 
-This repository is a teaching example. Its declaration records how the example was prepared; any student submission needs a declaration that reflects the student's own work and tool use under the assessment brief.
+The report's declaration records the tools used to prepare it. Student ID and name are left blank as requested.

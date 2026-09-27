@@ -1,12 +1,12 @@
 # Sydney Community Giving
 
-A Sydney charity events sample for PROG2002 Assessment 2. MySQL stores the events, Express serves a read-only API, and four HTML pages use plain JavaScript to display the results.
+A Sydney charity events website for PROG2002 Assessment 2. MySQL stores the events, Express serves a read-only API, and four HTML pages use plain JavaScript to display the results.
 
 ## Project layout
 
 - `api/`: Express server, `event_db.js`, SQL setup, package files and API smoke test.
 - `clientside/`: home, search, event detail and about pages; CSS, JavaScript and local images. Image and font sources are in `clientside/assets/CREDITS.md`.
-- `report/`: a completed teaching example based on the supplied report template. Student identity is left blank; the document uses Arial 12 pt and 1.5 line spacing.
+- `report/`: the completed project report based on the supplied template. Student identity is left blank; the document uses Arial 12 pt and 1.5 line spacing.
 - `docs/`: brief check, report guide, video outline and submission checklist.
 
 ## Requirements
@@ -56,4 +56,4 @@ With the server running, run `npm run smoke` in `api/`. It checks the event list
 
 Run `scripts/package-submission.sh` from the repository root to build both ZIP files in `output/`. Pass the student username as its first argument; without it, the filenames use `username` as a placeholder. Extract the two archives side by side so that `api/` can serve `clientside/`.
 
-The example report, private repository link and video are separate from the two ZIP files. The report includes a declaration describing this teaching example. The ZIP files exclude `.env`, `.local/`, `node_modules/` and Git internals.
+The report, private repository link and video are separate from the two ZIP files. The report includes a GenAI-use declaration. The ZIP files exclude `.env`, `.local/`, `node_modules/` and Git internals.
