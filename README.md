@@ -56,4 +56,4 @@ With the server running, run `npm run smoke` in `api/`. It checks the event list
 
 Run `scripts/package-submission.sh` from the repository root to build both ZIP files in `output/`. Pass the student username as its first argument; without it, the filenames use `username` as a placeholder. Extract the two archives side by side so that `api/` can serve `clientside/`.
 
-The report, private repository link and video are separate from the two ZIP files. The report includes a GenAI-use declaration. The ZIP files exclude `.env`, `.local/`, `node_modules/` and Git internals.
+The report, separate `report/GenAI Use Declaration.txt`, private repository link and video are outside the two ZIP files. The ZIP files exclude `.env`, `.local/`, `node_modules/` and Git internals.
