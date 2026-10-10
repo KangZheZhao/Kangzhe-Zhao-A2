@@ -1,0 +1,27 @@
+{
+  "checkedAt": "2026-10-10T07:29:11.866741+00:00",
+  "sourceEntriesCompared": 75,
+  "applicationFilesMatchingTestedExtractedCopy": 32,
+  "zipIntegrity": true,
+  "sourceHashesMatch": true,
+  "credentialsAndLocalFilesExcluded": true,
+  "finalSqlAndPeerFormMatch": true,
+  "windowsPreviewScript": "Separately tested for startup, API connectivity and owned-process shutdown.",
+  "packages": [
+    {
+      "file": "usernameA3-clientside.zip",
+      "sha256": "b65b85f6bd93fa8244f1761095a9116940270533ed5e582d6b31773d97aac4ed",
+      "bytes": 2128353
+    },
+    {
+      "file": "usernameA3-adminside.zip",
+      "sha256": "30665523cc340c7a3779efcdd777772bee19de315720ee36321ceed7955a1e0f",
+      "bytes": 10676
+    },
+    {
+      "file": "usernameA3-api.zip",
+      "sha256": "a98eaeed32cb4b86e66fbe881f7c43ccc7a2bef6a98bd4770024ab702f5b6094",
+      "bytes": 983411
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-10T07:26:06.3540933Z",
+  "startScript": "scripts/preview-windows.ps1",
+  "health": "ok",
+  "version": "2.0.0",
+  "weatherDate": "2026-10-17",
+  "latitude": -33.8573,
+  "longitude": 151.2011,
+  "result": "Dedicated MySQL and Node restarted successfully from the saved local profile.",
+  "shutdown": "Owned ports 3028, 3038 and 3328 closed; the pre-existing MySQL84 service remained stopped."
+}

@@ -1,0 +1,81 @@
+{
+  "at": "2026-10-10T07:21:06.507Z",
+  "cases": [
+    {
+      "name": "public calendar excludes past and suspended events; admin includes both",
+      "passed": true
+    },
+    {
+      "name": "registrations are newest first; public API excludes contact details",
+      "passed": true
+    },
+    {
+      "name": "combined filters, empty results and invalid dates behave correctly",
+      "passed": true
+    },
+    {
+      "name": "malformed JSON, wrong content type and cross-origin writes are rejected",
+      "passed": true
+    },
+    {
+      "name": "categories support create and duplicate protection",
+      "passed": true
+    },
+    {
+      "name": "event create validates fields and foreign keys",
+      "passed": true
+    },
+    {
+      "name": "event update increments version and blocks stale edits",
+      "passed": true
+    },
+    {
+      "name": "registration validation and server-controlled prices",
+      "passed": true
+    },
+    {
+      "name": "duplicate registration uses case-insensitive email identity",
+      "passed": true
+    },
+    {
+      "name": "simultaneous registrations from the same email create one row",
+      "passed": true
+    },
+    {
+      "name": "simultaneous bookings cannot oversell the remaining capacity",
+      "passed": true
+    },
+    {
+      "name": "capacity cannot shrink below bookings; price changes preserve old totals",
+      "passed": true
+    },
+    {
+      "name": "a person can register for a second event",
+      "passed": true
+    },
+    {
+      "name": "registered events cannot be deleted through API or SQL",
+      "passed": true
+    },
+    {
+      "name": "suspension hides the event and stops new registrations",
+      "passed": true
+    },
+    {
+      "name": "past events reject bookings and unregistered events can be deleted",
+      "passed": true
+    },
+    {
+      "name": "used categories are protected; renaming updates related listings",
+      "passed": true
+    },
+    {
+      "name": "weather handles unsupported dates, past dates and unknown events",
+      "passed": true
+    },
+    {
+      "name": "all frontend pages and local dependencies are served",
+      "passed": true
+    }
+  ]
+}

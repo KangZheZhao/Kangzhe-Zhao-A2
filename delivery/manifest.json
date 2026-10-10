@@ -1,0 +1,406 @@
+{
+  "version": "2.0.0",
+  "builtAt": "2026-10-10T07:28:13.728234+00:00",
+  "username": "username",
+  "packages": [
+    {
+      "file": "usernameA3-clientside.zip",
+      "sha256": "b65b85f6bd93fa8244f1761095a9116940270533ed5e582d6b31773d97aac4ed",
+      "bytes": 2128353,
+      "files": 20,
+      "entries": [
+        {
+          "path": "clientside/about.html",
+          "sha256": "67e645f067bbf61289ebc5fe3799de24819119966970af8787e5be977134333c",
+          "bytes": 3993
+        },
+        {
+          "path": "clientside/assets/art-gallery.jpg",
+          "sha256": "40c7342d7b6ed9c55be181d113bf7b526784abba1d802e88f7804e382a7c7354",
+          "bytes": 129188
+        },
+        {
+          "path": "clientside/assets/BarlowCondensed-Bold.ttf",
+          "sha256": "e476562ec9c1e16cf16475895b511f08c804f438cc9a9f80a44ea50a0eeb5b65",
+          "bytes": 109912
+        },
+        {
+          "path": "clientside/assets/community-run.jpg",
+          "sha256": "1a636872ba8c2c34b537ac2c2411c67bcc64b09d7714fc4f7608fcf509601c60",
+          "bytes": 214550
+        },
+        {
+          "path": "clientside/assets/concert.jpg",
+          "sha256": "9382ed922be0af3bd5231fa98156364ebaf7e9e31b86da47595578e6fac2b29a",
+          "bytes": 287895
+        },
+        {
+          "path": "clientside/assets/CREDITS.md",
+          "sha256": "e20bcd124917ab9d5bb3edfa615f3808f9a39d63c781971400abe026d5e4ecb6",
+          "bytes": 1271
+        },
+        {
+          "path": "clientside/assets/dinner.jpg",
+          "sha256": "fc974c9a8cd9ead359e31e3e3facd24039f538700f3530bf51c17e9672e1b781",
+          "bytes": 345405
+        },
+        {
+          "path": "clientside/assets/market.jpg",
+          "sha256": "c103bd082beafda3950baff39b73c3418dc484701588f0eb698ad273ef957cca",
+          "bytes": 311565
+        },
+        {
+          "path": "clientside/assets/OFL.txt",
+          "sha256": "e1d28aeb8efb0f18e2c27e73592a86cf890df3c27c1351bd3dbdb434322f854f",
+          "bytes": 4469
+        },
+        {
+          "path": "clientside/assets/sydney-harbour.jpg",
+          "sha256": "bd124ace70742f30fddfbc95578a44577b4ffc0599540932aa6a34524b317276",
+          "bytes": 710083
+        },
+        {
+          "path": "clientside/booking.css",
+          "sha256": "4debc05aa3c7be335e88d0d84112379231d3cebbbf1e1fb32d1125fa4205409c",
+          "bytes": 6287
+        },
+        {
+          "path": "clientside/event.html",
+          "sha256": "1f89229419ad1a4477cb7d0b7c2f1255bad65fca1dcf0f9e079121b6b3570937",
+          "bytes": 6735
+        },
+        {
+          "path": "clientside/index.html",
+          "sha256": "0a0108b20c6c0d59adafed54a7515a890d081180f7c597b95752cf786f56e64f",
+          "bytes": 5608
+        },
+        {
+          "path": "clientside/js/app.js",
+          "sha256": "7a57f77a95ba073afb0fbdcc8625057d161cb783ed26e2c6173c6d71a7011a0b",
+          "bytes": 8981
+        },
+        {
+          "path": "clientside/registration.html",
+          "sha256": "5a73dbd533724facc6edbd26e0b2f71fe3ae48c28e53bf7bb7cb36bffc508559",
+          "bytes": 7992
+        },
+        {
+          "path": "clientside/search.html",
+          "sha256": "7cb9ab240c272c229b72335e8c554d46117805ee5f569032af25fa1c0609699c",
+          "bytes": 5133
+        },
+        {
+          "path": "clientside/styles.css",
+          "sha256": "9786ce00665de53a0b74e9c9bd5329988ee5a97f1d38f066eda0049bc56c77cb",
+          "bytes": 25412
+        },
+        {
+          "path": "clientside/vendor/angular.min.js",
+          "sha256": "396dc1a03d6cc02e9c51a80246e0db53c5c8df9bd07287e3b51bce4a29dab355",
+          "bytes": 177368
+        },
+        {
+          "path": "clientside/vendor/ANGULARJS-LICENSE.txt",
+          "sha256": "f64ba8a51fa64d7f4616e88d0850eca2aa43c4ca73a798ff92f744012d0ff4df",
+          "bytes": 1074
+        },
+        {
+          "path": "clientside/vendor/CREDITS.md",
+          "sha256": "9c6541569df003e0b83bcae6c3b2c04b8baf30a399522061e0130df97cad5f91",
+          "bytes": 462
+        }
+      ]
+    },
+    {
+      "file": "usernameA3-adminside.zip",
+      "sha256": "30665523cc340c7a3779efcdd777772bee19de315720ee36321ceed7955a1e0f",
+      "bytes": 10676,
+      "files": 5,
+      "entries": [
+        {
+          "path": "adminside/admin.css",
+          "sha256": "3de616dbfd3d90ef6fac0334a597b197919eac01724d77172fd4ef097c57f933",
+          "bytes": 4263
+        },
+        {
+          "path": "adminside/admin.js",
+          "sha256": "d3855a0043df6ef8ca4a3f880bfe1ba26ff2dd40dd8e1bb9fbe799dc24045409",
+          "bytes": 7778
+        },
+        {
+          "path": "adminside/categories.html",
+          "sha256": "62c3149ced32416f00b6175b9e48aeb417ceb9712ad8410e527e5cbe29816b34",
+          "bytes": 4655
+        },
+        {
+          "path": "adminside/event.html",
+          "sha256": "6e100441d7c617f8cfbc313dcd08ab747c5f7f0802dcf472be6cd3dbe19f8544",
+          "bytes": 11892
+        },
+        {
+          "path": "adminside/index.html",
+          "sha256": "526a88dde70dba9b1c885742afa506902d04c64d6ad5dce52eb6667b39abddf3",
+          "bytes": 5635
+        }
+      ]
+    },
+    {
+      "file": "usernameA3-api.zip",
+      "sha256": "a98eaeed32cb4b86e66fbe881f7c43ccc7a2bef6a98bd4770024ab702f5b6094",
+      "bytes": 983411,
+      "files": 50,
+      "entries": [
+        {
+          "path": "api/.env.example",
+          "sha256": "bfcd60a8ba5346265867ffb2ae8575b064ed36068d528dc4c011c8a0060f0b1f",
+          "bytes": 154
+        },
+        {
+          "path": "api/app.js",
+          "sha256": "8d0ed7974b5bb9e691bbd3cc81c21354450beda5049119d6c159beab506c8249",
+          "bytes": 260
+        },
+        {
+          "path": "api/charityevents_db.sql",
+          "sha256": "e841cb91bebc687fe59c40dcee8559edbdac4a87a4b318b9194198443f503ff7",
+          "bytes": 10535
+        },
+        {
+          "path": "api/event_db.js",
+          "sha256": "fd943c221129e721dd6b2dabf5c9d470f4ba2b71dbb07b5924197408656c8161",
+          "bytes": 449
+        },
+        {
+          "path": "api/lib/validation.js",
+          "sha256": "fcb971241427347e0fc36a05ab92623887c827cb1115dbfd3aab3e303248ff53",
+          "bytes": 6134
+        },
+        {
+          "path": "api/migrations/001-a3.sql",
+          "sha256": "61516a329c721f74b8bd97be45541aa03ab8830052a2b8205185e80128cca1c2",
+          "bytes": 1410
+        },
+        {
+          "path": "api/package-lock.json",
+          "sha256": "c6b73afd5ddd3ed5b82e15cf092193359852a041c64934cfc6cf1ccd7e7ef3b3",
+          "bytes": 35643
+        },
+        {
+          "path": "api/package.json",
+          "sha256": "fa073f03e789fa3f2d1d84ac174dc4922637d1e6aaf5bf3540593ca9bb51f759",
+          "bytes": 678
+        },
+        {
+          "path": "api/routes/categories.js",
+          "sha256": "e8a48d81c1b13a9426d7eb04431ed24f2490982e7890a4b60b1327feb00e1a6f",
+          "bytes": 2175
+        },
+        {
+          "path": "api/routes/events.js",
+          "sha256": "fc30a7da58c30d91e00d0cee2ee34a62301d0d50afa5f94873a3b12e0bc006c5",
+          "bytes": 8917
+        },
+        {
+          "path": "api/routes/weather.js",
+          "sha256": "5dc60b25945cf5513d5a39eef698c0fe4f0b56e12cd8826f1e6fa1fedd680934",
+          "bytes": 3724
+        },
+        {
+          "path": "api/server.js",
+          "sha256": "c1d1c7745be18fde0e45465864f99a97f857097ee6c2eae601d6ea29fbf4d420",
+          "bytes": 4120
+        },
+        {
+          "path": "api/test/integration.mjs",
+          "sha256": "8f538baa550e3abc2250184b96f8ba557a2c9fdd5877062fae80bae812509438",
+          "bytes": 12278
+        },
+        {
+          "path": "api/test/smoke.mjs",
+          "sha256": "c6bbe24a483efef65a0f23136d99dffa3582c1ef7f7a8f57a4006601511b19f7",
+          "bytes": 2429
+        },
+        {
+          "path": "api/test/validation.test.js",
+          "sha256": "d785eda681bcefecd298a3ca346e025c47b0565982bf1d01dc9cef2cefaf6f0f",
+          "bytes": 2839
+        },
+        {
+          "path": "database/charityevents_db.sql",
+          "sha256": "4212df1ee48cbb98b57ac088820ebf6400e4d81b43aec67758d24366064b83b2",
+          "bytes": 10100
+        },
+        {
+          "path": "docs/api.md",
+          "sha256": "fc59ed182012183b5782394cd5c0bd3ab5ac271a05cf8a5d2e6081d22e48f999",
+          "bytes": 3958
+        },
+        {
+          "path": "docs/cpanel-deployment.md",
+          "sha256": "dd30cac56dde3577a82fe0b6b166cfa4c5cd384ce133507468325a2ae477fde5",
+          "bytes": 3318
+        },
+        {
+          "path": "docs/database.md",
+          "sha256": "938f9013c09c7b85043fc9e6da2ff195d9ea0e93b4fb1babf7f2097b860d0e82",
+          "bytes": 3045
+        },
+        {
+          "path": "docs/demo-outline.md",
+          "sha256": "01b8f67bd8d58c8931555e664f21172555cfba9cd18aeb1fcb4438144643ba54",
+          "bytes": 1884
+        },
+        {
+          "path": "docs/GenAI-assistance-record.md",
+          "sha256": "9819a0b04dff41de0cca81608f5cafe7f98dfef1efac17cafbe1cee5fae05699",
+          "bytes": 1365
+        },
+        {
+          "path": "docs/requirements-audit.md",
+          "sha256": "a70aa631ec0a339df7b7c4d52e5b30b9136e7e1e3c1090b7a590c850212b8889",
+          "bytes": 3208
+        },
+        {
+          "path": "docs/submission-checklist.md",
+          "sha256": "defff497bd8ff809297f528c977c139001713a9c58fc75202d1fd69747c39e08",
+          "bytes": 2228
+        },
+        {
+          "path": "README.md",
+          "sha256": "b2a340dc8bdc0d4851d17df15d872a1fa2b7d392752475dd50fa33dc9dd18120",
+          "bytes": 5735
+        },
+        {
+          "path": "reference/Peer Evaluation form.docx",
+          "sha256": "f27cadde72f8e85dc8457e6b56981e1ba30ae79f446f90e4cea2167c6ecf07d7",
+          "bytes": 987047
+        },
+        {
+          "path": "reference/PROG2002 A3 Assessment Brief.pdf",
+          "sha256": "2bbc9dc38041d08d1477389b68dc359f70a98f394eca58989c5ac54e807ffc70",
+          "bytes": 307405
+        },
+        {
+          "path": "reference/README.md",
+          "sha256": "973ec45721cf3feadcc18d6a51fed56ca93e259a69b6b5b542eb8452a32f3ae6",
+          "bytes": 729
+        },
+        {
+          "path": "scripts/check.mjs",
+          "sha256": "4ea6a08c7b619e1cdf5a0f5e39f193ca98f6d16af3eead3a1f31d0f29fac0302",
+          "bytes": 829
+        },
+        {
+          "path": "scripts/export-db.js",
+          "sha256": "9aed7e5eba81ed2cad98ad7b9f13ff52c0d783c2371c5aeeb3eee97495e88e8d",
+          "bytes": 2101
+        },
+        {
+          "path": "scripts/import-db.js",
+          "sha256": "15d23a9317c38cd8227d087f9db00a08a3b88e5d51c2fdf3ca53a4ac4bb9ca73",
+          "bytes": 1297
+        },
+        {
+          "path": "scripts/package-submission.py",
+          "sha256": "5930064121a1ac7c0e6fdd006a16194e41ce406a87cec6c008da9bbef4f14e69",
+          "bytes": 5063
+        },
+        {
+          "path": "scripts/preview-windows.ps1",
+          "sha256": "339041fea405ffac29112287cfda041d6b5edca2bd304db608e8b6e44550cdb7",
+          "bytes": 3405
+        },
+        {
+          "path": "submission/GitHub repository link.txt",
+          "sha256": "073dfc95e5364f57f3340094a720981e718757485440c0dfa3ee0fd501911379",
+          "bytes": 118
+        },
+        {
+          "path": "submission/Video link.txt",
+          "sha256": "848cddf32d72d158dd025c70e03a31c6c964c2963d3a9cad700f5ba9597c87ef",
+          "bytes": 111
+        },
+        {
+          "path": "verification/database-checks.json",
+          "sha256": "10bc8e2e3a087ce0056360ccd5ca763765dc9224f65d7cdf9093cb6d387aebff",
+          "bytes": 563
+        },
+        {
+          "path": "verification/database-counts.json",
+          "sha256": "7c9b2c8501845510bcec3b676c0a4305108b6b232e2dd6d83c9d63c7931fb3b0",
+          "bytes": 217
+        },
+        {
+          "path": "verification/desktop-metrics.json",
+          "sha256": "0bd35bf4675fd6d50f09feb993f191378a3a7c787e11f103ef09dae02158a3ba",
+          "bytes": 1077
+        },
+        {
+          "path": "verification/integration-results.json",
+          "sha256": "bcc5930c74ca19ac435dfc41b51415eca9b56450108dfe38adc0e2c12778927e",
+          "bytes": 2166
+        },
+        {
+          "path": "verification/preview-restart.json",
+          "sha256": "5a8f6da997a6f0e1393544f7dd4c0026643e9b3cb6805941d0ccc8d201ffc6a2",
+          "bytes": 430
+        },
+        {
+          "path": "verification/RESULTS.md",
+          "sha256": "a6f58c2263873b435f306b54b37ad6526b2dc4db18b7958ecbf442bccd3b343b",
+          "bytes": 4674
+        },
+        {
+          "path": "verification/ui/admin-desktop.jpg",
+          "sha256": "622586ee6a03f933ff11e8004ebacca7843186f7132e3263dd6a7a76a0193e98",
+          "bytes": 154396
+        },
+        {
+          "path": "verification/ui/admin-mobile.jpg",
+          "sha256": "9a94873b907d642bf7260577642995b94f48f955f5bcbc2fae2678ca052892cc",
+          "bytes": 26634
+        },
+        {
+          "path": "verification/ui/event-mobile.jpg",
+          "sha256": "930be467ca43861993faad826dc40bab6d17a2cd9140819aec056fdb74bfb3a8",
+          "bytes": 144263
+        },
+        {
+          "path": "verification/ui/home-desktop.jpg",
+          "sha256": "768921ad061369d6079704e5553700bdb504f83dd0bd93660e262b8e42be37c9",
+          "bytes": 118222
+        },
+        {
+          "path": "verification/ui/home-mobile.jpg",
+          "sha256": "132b2d9ebafecae3baa6a84fd9afd27f4f8f0e17cd88d413289ac02fc2a25795",
+          "bytes": 42549
+        },
+        {
+          "path": "verification/ui/registration-confirmation.jpg",
+          "sha256": "4f926b1307823557dea2534d60ffd91c4ad0ac68265457e6931c71d1618b30fc",
+          "bytes": 54791
+        },
+        {
+          "path": "verification/ui/registration-mobile.jpg",
+          "sha256": "31693ab938e3dc989f86cf97f239a3b1956cc8fe9fc332fc4da6d30f3c515ad1",
+          "bytes": 95596
+        },
+        {
+          "path": "verification/ui-metrics.json",
+          "sha256": "dd210cbd6bac538142f270a734e048f2ae47e1b25e6df0a7f8eb91388bacd616",
+          "bytes": 1060
+        },
+        {
+          "path": "verification/weather-response.json",
+          "sha256": "7cd7383da828244e6fb8c102907ee3142991ed787689480e2a71a79f4c73126f",
+          "bytes": 310
+        },
+        {
+          "path": "交付说明.md",
+          "sha256": "3242543e64837fda63614869ef598553c23dfb227f55e43e7c42b31dbb01e946",
+          "bytes": 1670
+        }
+      ]
+    }
+  ]
+}

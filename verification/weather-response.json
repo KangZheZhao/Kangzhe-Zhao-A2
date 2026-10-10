@@ -1,0 +1,14 @@
+{
+  "available": true,
+  "date": "2026-10-17",
+  "description": "Light drizzle",
+  "latitude": -33.8573,
+  "longitude": 151.2011,
+  "code": 51,
+  "low": 16.1,
+  "high": 20.7,
+  "rain_chance": 82,
+  "source": "Open-Meteo",
+  "source_url": "https://open-meteo.com/",
+  "fetched_at": "2026-10-10T07:21:09.516Z"
+}

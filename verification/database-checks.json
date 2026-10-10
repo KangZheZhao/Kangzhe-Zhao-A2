@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-10-10T06:55:54.911Z",
+  "engine": "MySQL 8.4.8",
+  "checks": [
+    {
+      "name": "Actual database export imports into an empty database with all rows, unique identities and restricted event deletion.",
+      "passed": true,
+      "counts": {
+        "events": 10,
+        "categories": 4,
+        "registrations": 10
+      }
+    },
+    {
+      "name": "A2 migration preserves every existing event value, creates an empty registration table and enforces the new foreign key.",
+      "passed": true,
+      "eventsPreserved": 10
+    }
+  ]
+}

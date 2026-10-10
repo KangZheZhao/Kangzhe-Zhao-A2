@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-10-10T07:21:09.519Z",
+  "node": "v24.13.0",
+  "database": "Separate temporary MySQL database; app user granted CRUD permissions only.",
+  "checks": [
+    {
+      "name": "Packaged default app.js entry point starts with an independent imported database.",
+      "passed": true
+    },
+    {
+      "name": "syntax passed from extracted sources.",
+      "passed": true
+    },
+    {
+      "name": "unit passed from extracted sources.",
+      "passed": true
+    },
+    {
+      "name": "smoke passed from extracted sources.",
+      "passed": true
+    },
+    {
+      "name": "integration passed from extracted sources.",
+      "passed": true
+    },
+    {
+      "name": "Eight pages and all packaged visitor/staff assets return 200; .env returns 404.",
+      "passed": true
+    },
+    {
+      "name": "Real event-day weather returns matching venue coordinates.",
+      "passed": true
+    }
+  ],
+  "sourceArchivesAtTest": [
+    {
+      "file": "usernameA3-clientside.zip",
+      "sha256": "bfe06922a507639a62894ffa68f6dfced9cf0fae658fa74a958b4509b28daeaa"
+    },
+    {
+      "file": "usernameA3-adminside.zip",
+      "sha256": "c8ce2e56423810ce9ab81ed0b52e62f0e55a985b1dcaa73254193f7d5a1d4ef2"
+    },
+    {
+      "file": "usernameA3-api.zip",
+      "sha256": "a084f6a21b8163af60a10ea2e974f1b2130eea16a88eb9685ebb7f494296a1b7"
+    }
+  ]
+}

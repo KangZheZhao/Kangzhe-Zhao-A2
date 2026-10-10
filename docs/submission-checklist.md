@@ -1,11 +1,45 @@
-# Before handing it in
+# A3 hand-in checklist
 
-- [x] Report has the project title, database diagram and API explanation. Name and ID still need filling in.
-- [ ] Import the SQL on a clean MySQL setup and run the site from the README steps.
-- [ ] Run `npm run smoke` in `api/`, then click through the site at desktop and phone widths.
-- [ ] Check the private GitHub link and make sure the marker can open it.
-- [ ] Make the two ZIP files with the real student username. Include the SQL file; leave out `.env`, `node_modules/`, `.local/` and Git files.
-- [ ] Record the demo video (15 minutes max), upload it to SCU OneDrive and test its sharing link.
-- [ ] Check the assessment brief for any other required statements or files before submitting on Blackboard.
+The supplied brief gives 12 October 2026 at 11:59 pm AEST/AEDT. Confirm the date/timezone in Blackboard. Each student submits the same team project through their own account.
 
-The ZIP files come from `scripts/package-submission.sh`. The report and video are handed in separately.
+## Source and documentation
+
+- [ ] Review the assistance record and follow the Unit Assessor's GenAI conditions. Do not reuse the A2 declaration for A3.
+- [ ] Produce your own permitted implementation and explanation.
+- [ ] Replace `username` when making the final archives.
+- [ ] Supply `usernameA3-clientside.zip`, `usernameA3-adminside.zip` and `usernameA3-api.zip`.
+- [ ] Include final SQL and project documentation; retain at least 10 registrations.
+- [ ] Exclude `.env`, credentials, dependencies, local databases and A2 ZIPs.
+
+## Deployment and understanding
+
+- [ ] Student A deploys the complete project to their own SCU cPanel and tests it publicly.
+- [ ] Student B does the same. Do not share credentials.
+- [ ] Use a private team GitHub repository with genuine regular commits and clear explanations; give the marker access.
+- [ ] Replace `submission/GitHub repository link.txt` with the actual URL.
+- [ ] Record the student's own explanation and live demo, at most 15 minutes.
+- [ ] Upload to SCU OneDrive; check the marker's access and replace `submission/Video link.txt`.
+- [ ] Provide an accurate GenAI declaration describing actual use within the assessor's conditions.
+
+## Team evaluation
+
+- [ ] Complete the supplied blank form independently and confidentially from real contributions.
+- [ ] Send directly to the tutor, not the Unit Assessor, before the deadline.
+- [ ] Use `PROG2002_A3_[Team_ID]_[Member_name]` from the A3 brief. The form's A2 subject is a legacy inconsistency.
+- [ ] Follow Blackboard instructions without putting confidential ratings in shared source packages.
+
+Record real results below; fields are intentionally empty:
+
+```text
+Team ID:
+Student A name/ID:
+Student A public client URL:
+Student A public admin URL:
+Student B name/ID:
+Student B public client URL:
+Student B public admin URL:
+Private GitHub URL and marker access checked:
+SCU OneDrive URL and access checked:
+Peer form sent to tutor on:
+GenAI conditions agreed with assessor:
+```

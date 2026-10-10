@@ -1,1 +1,2 @@
-https://github.com/nakar-cn/prog2002-a2-charity-events
+PRIVATE_GITHUB_REPOSITORY_URL
+Placeholder only. Add the real private team repository URL and confirm marker access.

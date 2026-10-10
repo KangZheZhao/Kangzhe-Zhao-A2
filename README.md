@@ -1,51 +1,80 @@
-# Sydney Community Giving
+# Sydney Community Giving - A3 reference
 
-A charity events site for PROG2002 A2. The event data is in MySQL, the API uses Express, and the pages are plain HTML, CSS and JavaScript.
+This version extends the A2 charity event site with ticket registration and staff event management. Express serves both websites and the JSON API from one origin. MySQL stores events and bookings. Both websites use AngularJS 1.8.3, bundled locally.
 
-## What's where
+AI assistance produced parts of this reference implementation and its documentation. The supplied A3 brief restricts copying AI-generated code or text into an assessment. Read [the assistance record](docs/GenAI-assistance-record.md) before using this work for study or submission.
 
-- `api/` has the server, SQL file and a small smoke test.
-- `clientside/` has the four pages, scripts, styles and pictures.
-- `report/` has the Word report. The student name and ID fields are blank.
-- `docs/` has notes for the report, demo and hand-in.
+## Run the project
 
-## Run it locally
+Use Node.js 20.11 or later and MySQL 8.0.16 or later. Verification used MySQL 8.4.8. Keep `api`, `clientside` and `adminside` beside one another.
 
-You need Node.js 18+, MySQL 8+ and a MySQL account that can import the database.
-
-1. From the project folder, import the sample data:
+1. Create an empty database, for example `charityevents_a3_dev`, with `utf8mb4` character encoding. Import **one** SQL file into the selected database:
+   - `database/charityevents_db.sql` is the tested export of the final schema and data: 10 events and 10 fictional registrations.
+   - `api/charityevents_db.sql` creates the same schema with event dates relative to the import date. It replaces existing project tables; use an empty database.
+2. Give the application database user `SELECT`, `INSERT`, `UPDATE` and `DELETE` permissions on this database. Use an import account with schema permissions when importing. A2's read-only account is insufficient for A3.
+3. Copy `api/.env.example` to `api/.env`. Set database name, account, password, host and port. The example uses website port 3000.
+4. In `api`, run:
 
    ```sh
-   mysql -u root -p < api/charityevents_db.sql
+   npm ci
+   npm start
    ```
 
-   This makes three tables and ten events. Re-importing replaces those tables, so don't use it on a database you want to keep.
+5. Open `http://localhost:3000/` for visitors and `http://localhost:3000/admin/` for staff. If `PORT` differs, use that port.
 
-2. Make an account for the site to read from. Pick your own password:
+The server checks the database connection on startup. Opening HTML directly bypasses the server and will not load event data.
 
-   ```sql
-   CREATE USER 'charity_app'@'127.0.0.1' IDENTIFIED BY 'your_local_password';
-   GRANT SELECT ON charityevents_db.* TO 'charity_app'@'127.0.0.1';
-   ```
+On the existing Windows workspace, `scripts/preview-windows.ps1` can restart the saved local test environment when its `.local` profile is present. It stops only the database it launched when the preview ends. Fresh copies should use the database setup above.
 
-3. Copy `api/.env.example` to `api/.env` and put the password there. Check the host and port too.
-4. In `api/`, run `npm ci` and then `npm start`.
-5. Open `http://localhost:3000/`.
+## Pages
 
-Keep `api/` and `clientside/` next to each other. The server also serves the pages and pictures.
+| Visitors | Staff |
+| --- | --- |
+| `/index.html`: upcoming events | `/admin/`: all events, status filters and deletion |
+| `/search.html`: date, location and category search | `/admin/event.html`: new event |
+| `/event.html?id=1`: details, bookings and weather | `/admin/event.html?id=1`: editing and booking contacts |
+| `/registration.html?id=1`: booking and receipt | `/admin/categories.html`: category management |
+| `/about.html`: organisation and causes | |
 
-## Pages and API
+A booking records name, contacts, quantity, server timestamp and ticket price. It does not charge a card. Ticket revenue and `raised_amount` are separate: staff maintain the fundraising total. Email is the booking identity, so one email can book several events but cannot book the same event twice. There is no login or user table.
 
-The pages are `/index.html`, `/search.html`, `/event.html?id=1` and `/about.html`.
+The staff area has no authentication, as specified in the brief. Use fictional contacts in a public demonstration. Public event data shows names, quantities and timestamps; staff data also contains email addresses and phone numbers.
 
-- `GET /api/events` gives the current and upcoming events. You can add `date`, `location` or `categoryId` to filter the list.
-- `GET /api/categories` fills the category menu.
-- `GET /api/events/:id` gives one event's details.
+Weather uses the actual event date and venue coordinates. Dates outside the forecast window show an explanation. Weather failure does not prevent details or bookings from working.
 
-The Register button just shows the under-construction message. It doesn't save anyone's details or take payments.
+## Check and export
 
-## Quick check
+From `api`:
 
-With the server running, use `npm run smoke` in `api/`. Also click through the pages on a computer and phone-sized screen. Try a search that finds nothing and one that combines filters.
+```sh
+npm run check
+npm test
+npm run smoke
+npm run integration
+npm run export
+```
 
-For the two ZIP files, run `scripts/package-submission.sh` from this folder. Give it the student username as the first argument. The files go in `output/`; the report, video and repository link are separate hand-in items. The ZIP files leave out `.env`, `.local/`, `node_modules/` and Git files.
+`check` and `test` do not need a database. `smoke` reads the running server. `integration` creates and removes its own fixtures; it refuses non-loopback targets or database names without the `_dev` suffix. Run write tests against a dedicated local database only.
+
+`export` writes all four tables and data to `database/charityevents_db.sql`, without credentials or a fixed database name. For an existing A2 database, back up first and use the separate [A2 migration](docs/database.md).
+
+## Files and hand-in
+
+- [API reference](docs/api.md), [database notes](docs/database.md) and [cPanel guide](docs/cpanel-deployment.md) explain the implementation.
+- [Requirements audit](docs/requirements-audit.md) maps the brief to features and remaining evidence.
+- [Demo outline](docs/demo-outline.md) and [submission checklist](docs/submission-checklist.md) support the student's own explanation.
+- [Verification results](verification/RESULTS.md) record actual checks and browser screenshots.
+- `reference/` holds unchanged copies of the supplied brief and blank peer form.
+- `archive/a2/` preserves the old report, ZIPs, declarations and scripts. These historical files are excluded from A3 packages. Copied personal A2 notes in `1/` and `report/` are also excluded.
+
+Make the three source archives from the project root:
+
+```sh
+python scripts/package-submission.py --username username
+```
+
+The placeholder files are `delivery/usernameA3-clientside.zip`, `delivery/usernameA3-adminside.zip` and `delivery/usernameA3-api.zip`. Extract all three into the same parent folder. The API archive includes project documentation, database export and tests. `.env`, dependencies, local database files and A2 archives are omitted.
+
+Each student still needs to deploy the same project in their own SCU cPanel, provide genuine team work on a private GitHub repository, record their own demonstration, and complete the confidential peer form. This local reference does not supply those personal or hosted results.
+
+The v2 repository keeps the A2 history but has no GitHub remote configured. Its temporary clone remote back to the original local folder was removed. Configure the intended private team repository before pushing.

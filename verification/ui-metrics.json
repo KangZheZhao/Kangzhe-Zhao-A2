@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-10T07:09:14.745Z",
+  "viewport": {
+    "width": 375,
+    "height": 812
+  },
+  "pages": [
+    {
+      "brokenImages": [],
+      "path": "/index.html",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/search.html",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/event.html?id=1",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/registration.html?id=1",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/about.html",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/admin/",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/admin/event.html?id=1",
+      "scrollWidth": 360,
+      "width": 375
+    },
+    {
+      "brokenImages": [],
+      "path": "/admin/categories.html",
+      "scrollWidth": 360,
+      "width": 375
+    }
+  ]
+}
