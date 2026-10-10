@@ -1,9 +1,10 @@
--- Import with a MySQL account that can create databases and tables.
--- Re-importing replaces the three project tables and their sample data.
-CREATE DATABASE IF NOT EXISTS charityevents_db
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE charityevents_db;
+-- PROG2002 A3 reference dataset. All people and bookings are fictional.
+-- Select an EMPTY project database before importing this file.
+-- No CREATE DATABASE / USE statement: supports cPanel-prefixed database names.
+-- Re-importing replaces the four project tables. Back up existing data first.
+SET NAMES utf8mb4;
 
+DROP TABLE IF EXISTS registrations;
 DROP TABLE IF EXISTS events;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS organisations;
@@ -42,6 +43,10 @@ CREATE TABLE events (
   goal_amount DECIMAL(12,2) NOT NULL,
   raised_amount DECIMAL(12,2) NOT NULL DEFAULT 0.00,
   is_suspended BOOLEAN NOT NULL DEFAULT FALSE,
+  ticket_capacity INT UNSIGNED NOT NULL DEFAULT 200,
+  latitude DECIMAL(9,6) NULL,
+  longitude DECIMAL(9,6) NULL,
+  version INT UNSIGNED NOT NULL DEFAULT 1,
   PRIMARY KEY (id),
   KEY idx_events_visibility_date (is_suspended, event_date),
   KEY idx_events_category (category_id),
@@ -52,7 +57,28 @@ CREATE TABLE events (
   CONSTRAINT chk_events_time CHECK (end_time > start_time),
   CONSTRAINT chk_events_ticket CHECK (ticket_price >= 0),
   CONSTRAINT chk_events_goal CHECK (goal_amount > 0),
-  CONSTRAINT chk_events_raised CHECK (raised_amount >= 0)
+  CONSTRAINT chk_events_raised CHECK (raised_amount >= 0),
+  CONSTRAINT chk_events_capacity CHECK (ticket_capacity BETWEEN 1 AND 100000),
+  CONSTRAINT chk_events_latitude CHECK (latitude BETWEEN -90 AND 90),
+  CONSTRAINT chk_events_longitude CHECK (longitude BETWEEN -180 AND 180)
+) ENGINE=InnoDB;
+
+CREATE TABLE registrations (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  event_id INT UNSIGNED NOT NULL,
+  full_name VARCHAR(120) NOT NULL,
+  email VARCHAR(160) NOT NULL,
+  phone VARCHAR(32) NOT NULL,
+  registered_at DATETIME(6) NOT NULL,
+  tickets INT UNSIGNED NOT NULL,
+  unit_price DECIMAL(10,2) NOT NULL,
+  total_amount DECIMAL(12,2) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uq_registrations_event_email (event_id, email),
+  KEY idx_registrations_event_date (event_id, registered_at, id),
+  CONSTRAINT fk_registrations_event FOREIGN KEY (event_id) REFERENCES events (id) ON DELETE RESTRICT,
+  CONSTRAINT chk_registrations_tickets CHECK (tickets BETWEEN 1 AND 10),
+  CONSTRAINT chk_registrations_price CHECK (unit_price >= 0 AND total_amount = unit_price * tickets)
 ) ENGINE=InnoDB;
 
 INSERT INTO organisations (id, name, mission, contact_email) VALUES
@@ -77,14 +103,14 @@ VALUES
    'A 5 km walk or 10 km run along the harbour.',
    'Support neighbourhood food relief.',
    'Meet at Barangaroo Reserve for a 5 km walk or 10 km run. Volunteers will mark both routes, and breakfast follows at the finish.',
-   DATE_ADD(CURDATE(), INTERVAL 14 DAY), '07:00:00', '11:00:00',
+   DATE_ADD(CURDATE(), INTERVAL 7 DAY), '07:00:00', '11:00:00',
    'Barangaroo Reserve', 'Barangaroo', 'Sydney', 25.00, 12000.00, 4200.00, FALSE),
   (1, 4, 'Carriageworks Makers Market',
    'market.jpg',
    'A maker market at Carriageworks with free entry.',
    'Help provide care packs for families in Sydney.',
    'At Carriageworks, browse makers'' stalls, try the family activities and pick up lunch from the food stalls. Entry is free.',
-   DATE_ADD(CURDATE(), INTERVAL 21 DAY), '10:00:00', '16:00:00',
+   DATE_ADD(CURDATE(), INTERVAL 12 DAY), '10:00:00', '16:00:00',
    'Carriageworks', 'Eveleigh', 'Sydney', 0.00, 8000.00, 2600.00, FALSE),
   (1, 2, 'Town Hall Mentors'' Dinner',
    'dinner.jpg',
@@ -142,3 +168,28 @@ VALUES
    'This sample event is suspended and must never appear in public results.',
    DATE_ADD(CURDATE(), INTERVAL 70 DAY), '18:00:00', '21:00:00',
    'City Recital Hall', 'Sydney CBD', 'Sydney', 30.00, 10000.00, 1000.00, TRUE);
+
+UPDATE events SET latitude = -33.8573, longitude = 151.2011 WHERE id = 1;
+UPDATE events SET latitude = -33.8930, longitude = 151.1937 WHERE id = 2;
+UPDATE events SET latitude = -33.8732, longitude = 151.2066 WHERE id = 3;
+UPDATE events SET latitude = -33.8988, longitude = 151.1735 WHERE id = 4;
+UPDATE events SET latitude = -33.8978, longitude = 151.2345 WHERE id = 5;
+UPDATE events SET latitude = -33.8116, longitude = 151.0001 WHERE id = 6;
+UPDATE events SET latitude = -33.8592, longitude = 151.2085 WHERE id = 7;
+UPDATE events SET latitude = -33.8578, longitude = 151.1922 WHERE id = 8;
+UPDATE events SET latitude = -33.8731, longitude = 151.2113 WHERE id = 9;
+UPDATE events SET latitude = -33.8665, longitude = 151.2081 WHERE id = 10;
+
+-- Ten registrations; the same person can attend different events.
+-- UTC timestamps are converted to Australia/Sydney for display.
+INSERT INTO registrations (event_id, full_name, email, phone, registered_at, tickets, unit_price, total_amount) VALUES
+ (1, 'Alex Chen', 'alex.chen@example.com', '0400000101', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 8 DAY), 2, 25.00, 50.00),
+ (1, 'Priya Shah', 'priya.shah@example.com', '0400000102', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 6 DAY), 1, 25.00, 25.00),
+ (1, 'Oliver Reed', 'oliver.reed@example.com', '0400000103', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 4 DAY), 3, 25.00, 75.00),
+ (1, 'Mia Tran', 'mia.tran@example.com', '0400000104', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 1 DAY), 2, 25.00, 50.00),
+ (2, 'Alex Chen', 'alex.chen@example.com', '0400000101', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 7 DAY), 2, 0.00, 0.00),
+ (2, 'Sam Wilson', 'sam.wilson@example.com', '0400000105', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 2 DAY), 4, 0.00, 0.00),
+ (3, 'Ella Martin', 'ella.martin@example.com', '0400000106', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 5 DAY), 2, 95.00, 190.00),
+ (3, 'Noah Patel', 'noah.patel@example.com', '0400000107', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 3 DAY), 1, 95.00, 95.00),
+ (4, 'Ruby Lee', 'ruby.lee@example.com', '0400000108', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 2 DAY), 2, 38.00, 76.00),
+ (9, 'Jack Brown', 'jack.brown@example.com', '0400000109', DATE_SUB(UTC_TIMESTAMP(6), INTERVAL 15 DAY), 1, 10.00, 10.00);

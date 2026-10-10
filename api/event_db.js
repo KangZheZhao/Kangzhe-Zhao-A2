@@ -5,10 +5,13 @@ const pool = mysql.createPool({
   port: Number(process.env.DB_PORT || 3306),
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'charityevents_db',
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
-  dateStrings: true
+  dateStrings: true,
+  timezone: 'Z',
+  decimalNumbers: true,
+  charset: 'utf8mb4'
 });
 
 module.exports = pool;

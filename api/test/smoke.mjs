@@ -1,6 +1,10 @@
 import assert from 'node:assert/strict';
+import path from 'node:path';
+import { createRequire } from 'node:module';
+const require = createRequire(import.meta.url);
+require('dotenv').config({ path: path.resolve(import.meta.dirname, '../.env') });
 
-const base = process.env.BASE_URL || 'http://localhost:3000';
+const base = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
 
 async function get(path, expectedStatus = 200) {
   const response = await fetch(new URL(path, base));

@@ -1,16 +1,20 @@
 {
-  "name": "prog2002-a2-charity-events-api",
-  "version": "1.0.0",
+  "name": "prog2002-a3-charity-events-api",
+  "version": "2.0.0",
   "private": true,
-  "description": "Read-only charity events API and website server for PROG2002 A2",
+  "description": "Charity event registration, administration and website server",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --check event_db.js",
-    "smoke": "node test/smoke.mjs"
+    "check": "node ../scripts/check.mjs",
+    "test": "node --test test/validation.test.js",
+    "smoke": "node test/smoke.mjs",
+    "integration": "node test/integration.mjs",
+    "import": "node ../scripts/import-db.js",
+    "export": "node ../scripts/export-db.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11"
   },
   "dependencies": {
     "dotenv": "^16.5.0",
