@@ -2,6 +2,8 @@
 
 Checked on 10 October 2026 against a dedicated loopback MySQL 8.4.8 instance and the application at `http://localhost:3028`. This records local results, not a hosted deployment or a mark prediction.
 
+For the later Node.js 18 compatibility checks and the two SCU deployments on 14 October 2026, see [the dated deployment record](SCU-2026-10-14.md). The original results below retain their 10 October scope.
+
 ## Automated checks
 
 | Check | Result | Evidence |

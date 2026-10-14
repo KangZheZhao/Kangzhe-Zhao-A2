@@ -13,8 +13,8 @@ The supplied brief gives 12 October 2026 at 11:59 pm AEST/AEDT. Confirm the date
 
 ## Deployment and understanding
 
-- [ ] Student A deploys the complete project to their own SCU cPanel and tests it publicly.
-- [ ] Student B does the same. Do not share credentials.
+- [x] `kzhao11` deployment publicly verified on 14 October 2026; see [the dated record](../verification/SCU-2026-10-14.md).
+- [x] `tzhou14` deployment independently verified on the same date. Credentials are omitted from this record.
 - [ ] Use a private team GitHub repository with genuine regular commits and clear explanations; give the marker access.
 - [ ] Replace `submission/GitHub repository link.txt` with the actual URL.
 - [ ] Record the student's own explanation and live demo, at most 15 minutes.
@@ -29,6 +29,8 @@ The supplied brief gives 12 October 2026 at 11:59 pm AEST/AEDT. Confirm the date
 - [ ] Follow Blackboard instructions without putting confidential ratings in shared source packages.
 
 Record real results below; fields are intentionally empty:
+
+Verified hosting accounts: `kzhao11` at <https://24833154.it.scu.edu.au/scg-a3/> and `tzhou14` at <https://24833196.it.scu.edu.au/scg-a3/>. Each staff URL appends `admin/`. Student names, IDs and team mapping remain for the students to complete.
 
 ```text
 Team ID:

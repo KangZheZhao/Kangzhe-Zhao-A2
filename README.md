@@ -77,6 +77,6 @@ The placeholder files are `delivery/usernameA3-clientside.zip`, `delivery/userna
 
 For hosting, add `--runtime-only --username YOUR_ACCOUNT`. This produces the same application in three account-named ZIPs and a separate `YOUR_ACCOUNTA3-manifest.json`, without project notes, helper scripts, tests or the A2 migration. Import `api/charityevents_db.sql` into a fresh database. Set `APP_BASE_PATH=/scg-a3` for that public URL prefix, or leave it empty at the domain root. Page navigation, assets, API requests and redirects use the configured base.
 
-Each student still needs to deploy the same project in their own SCU cPanel, provide genuine team work on a private GitHub repository, record their own demonstration, and complete the confidential peer form. This local reference does not supply those personal or hosted results.
+The same runtime version, 2.0.1, was deployed and publicly verified in the `kzhao11` and `tzhou14` SCU accounts on 14 October 2026. [The deployment record](verification/SCU-2026-10-14.md) contains both public URLs, package hashes and actual acceptance results. Each student still needs genuine team work on a private GitHub repository, their own demonstration and the confidential peer form; deployment does not supply those personal results.
 
 The v2 repository keeps the A2 history but has no GitHub remote configured. Its temporary clone remote back to the original local folder was removed. Configure the intended private team repository before pushing.

@@ -1,6 +1,6 @@
 # Deploying each student's copy
 
-Deployment has not been performed for this reference. Each student must use their own SCU cPanel account and database. Follow the SCU Session Recording guide for the account's actual interface. Credentials stay with their owner.
+Version 2.0.1 was deployed in the `kzhao11` and `tzhou14` SCU accounts on 14 October 2026, with separate application directories and databases. [Actual URLs and verification results](../verification/SCU-2026-10-14.md) are recorded separately. For another account, use that account's own database and follow its actual cPanel interface. Credentials stay private.
 
 ## Place the files
 
