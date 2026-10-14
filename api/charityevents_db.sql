@@ -15,14 +15,14 @@ CREATE TABLE organisations (
   mission VARCHAR(500) NOT NULL,
   contact_email VARCHAR(160) NOT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE categories (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(80) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY uq_categories_name (name)
-) ENGINE=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE events (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -53,7 +53,8 @@ CREATE TABLE events (
   CONSTRAINT fk_events_organisation FOREIGN KEY (organisation_id)
     REFERENCES organisations (id),
   CONSTRAINT fk_events_category FOREIGN KEY (category_id)
-    REFERENCES categories (id),
+    REFERENCES categories (id)
+  /*!80016 ,
   CONSTRAINT chk_events_time CHECK (end_time > start_time),
   CONSTRAINT chk_events_ticket CHECK (ticket_price >= 0),
   CONSTRAINT chk_events_goal CHECK (goal_amount > 0),
@@ -61,7 +62,8 @@ CREATE TABLE events (
   CONSTRAINT chk_events_capacity CHECK (ticket_capacity BETWEEN 1 AND 100000),
   CONSTRAINT chk_events_latitude CHECK (latitude BETWEEN -90 AND 90),
   CONSTRAINT chk_events_longitude CHECK (longitude BETWEEN -180 AND 180)
-) ENGINE=InnoDB;
+  */
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE registrations (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -76,10 +78,12 @@ CREATE TABLE registrations (
   PRIMARY KEY (id),
   UNIQUE KEY uq_registrations_event_email (event_id, email),
   KEY idx_registrations_event_date (event_id, registered_at, id),
-  CONSTRAINT fk_registrations_event FOREIGN KEY (event_id) REFERENCES events (id) ON DELETE RESTRICT,
+  CONSTRAINT fk_registrations_event FOREIGN KEY (event_id) REFERENCES events (id) ON DELETE RESTRICT
+  /*!80016 ,
   CONSTRAINT chk_registrations_tickets CHECK (tickets BETWEEN 1 AND 10),
   CONSTRAINT chk_registrations_price CHECK (unit_price >= 0 AND total_amount = unit_price * tickets)
-) ENGINE=InnoDB;
+  */
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO organisations (id, name, mission, contact_email) VALUES
   (1, 'Sydney Community Giving',

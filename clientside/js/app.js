@@ -1,9 +1,17 @@
 'use strict';
 (function () {
+  const appUrl = function (value) {
+    const resolved = new URL(value.replace(/^\//, ''), document.baseURI);
+    return resolved.pathname + resolved.search;
+  };
+  // Fragment links must stay on this page even though the shared base points to the app root.
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.setAttribute('href', window.location.pathname + window.location.search + link.getAttribute('href'));
+  });
   const app = angular.module('charitySite', []);
   app.factory('Api', ['$http', '$q', function ($http, $q) {
     function call(method, url, data, params) {
-      return $http({ method, url, data, params, timeout: 12000, headers: { Accept: 'application/json' } })
+      return $http({ method, url: appUrl(url), data, params, timeout: 12000, headers: { Accept: 'application/json' } })
         .then(function (response) { return response.data; }, function (response) {
           const error = new Error(response.data && response.data.error ||
             (response.status === -1 ? 'The server could not be reached. Try again.' : 'The request could not be completed.'));
@@ -28,6 +36,7 @@
         Object.assign({ day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }, options)).format(parsed);
     }
     return {
+      path: appUrl,
       money: function (value) { return money.format(Number(value) || 0); },
       date,
       day: function (value) { return date(value, { day: '2-digit', month: undefined, year: undefined }); },
@@ -42,9 +51,9 @@
       },
       percent: function (event) { return Math.round(Number(event.raised_amount) / Number(event.goal_amount) * 100); },
       progress: function (event) { return Math.max(0, Math.min(100, Math.round(Number(event.raised_amount) / Number(event.goal_amount) * 100))); },
-      eventUrl: function (event) { return '/event.html?id=' + event.id; },
-      registrationUrl: function (event) { return '/registration.html?id=' + event.id; },
-      image: function (event) { return '/assets/' + event.image_file; },
+      eventUrl: function (event) { return appUrl('/event.html?id=' + event.id); },
+      registrationUrl: function (event) { return appUrl('/registration.html?id=' + event.id); },
+      image: function (event) { return appUrl('/assets/' + event.image_file); },
       dateValue: function (value) {
         if (!(value instanceof Date) || Number.isNaN(value.valueOf())) return '';
         return value.getFullYear() + '-' + String(value.getMonth() + 1).padStart(2, '0') + '-' + String(value.getDate()).padStart(2, '0');
@@ -81,7 +90,7 @@
       if (vm.filters.date) params.date = Display.dateValue(vm.filters.date);
       if (vm.filters.location && vm.filters.location.trim()) params.location = vm.filters.location.trim();
       if (vm.filters.categoryId) params.categoryId = vm.filters.categoryId;
-      $window.history.replaceState(null, '', '/search.html' + (Object.keys(params).length ? '?' + new URLSearchParams(params) : ''));
+      $window.history.replaceState(null, '', Display.path('/search.html') + (Object.keys(params).length ? '?' + new URLSearchParams(params) : ''));
       return Api.get('/api/events', params).then(function (events) { if (current === searchNumber) vm.events = events; })
         .catch(function (error) { if (current === searchNumber) { vm.error = error.message; vm.events = []; } })
         .finally(function () { if (current === searchNumber) vm.loading = false; });

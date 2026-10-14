@@ -53,7 +53,8 @@ CREATE TABLE `events` (
   KEY `idx_events_category` (`category_id`),
   KEY `fk_events_organisation` (`organisation_id`),
   CONSTRAINT `fk_events_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `fk_events_organisation` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`),
+  CONSTRAINT `fk_events_organisation` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`)
+  /*!80016 ,
   CONSTRAINT `chk_events_capacity` CHECK ((`ticket_capacity` between 1 and 100000)),
   CONSTRAINT `chk_events_goal` CHECK ((`goal_amount` > 0)),
   CONSTRAINT `chk_events_latitude` CHECK ((`latitude` between -(90) and 90)),
@@ -61,6 +62,7 @@ CREATE TABLE `events` (
   CONSTRAINT `chk_events_raised` CHECK ((`raised_amount` >= 0)),
   CONSTRAINT `chk_events_ticket` CHECK ((`ticket_price` >= 0)),
   CONSTRAINT `chk_events_time` CHECK ((`end_time` > `start_time`))
+  */
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 INSERT INTO `events` (`id`, `organisation_id`, `category_id`, `name`, `image_file`, `short_description`, `purpose`, `description`, `event_date`, `start_time`, `end_time`, `venue`, `suburb`, `city`, `ticket_price`, `goal_amount`, `raised_amount`, `is_suspended`, `ticket_capacity`, `latitude`, `longitude`, `version`) VALUES
 (1, 1, 1, 'Harbour Sunrise Run', 'community-run.jpg', 'A 5 km walk or 10 km run along the harbour.', 'Support neighbourhood food relief.', 'Meet at Barangaroo Reserve for a 5 km walk or 10 km run. Volunteers will mark both routes, and breakfast follows at the finish.', '2026-10-17', '07:00:00', '11:00:00', 'Barangaroo Reserve', 'Barangaroo', 'Sydney', '25.00', '12000.00', '4200.00', 0, 200, '-33.857300', '151.201100', 1),
@@ -87,9 +89,11 @@ CREATE TABLE `registrations` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_registrations_event_email` (`event_id`,`email`),
   KEY `idx_registrations_event_date` (`event_id`,`registered_at`,`id`),
-  CONSTRAINT `fk_registrations_event` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE RESTRICT,
+  CONSTRAINT `fk_registrations_event` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`) ON DELETE RESTRICT
+  /*!80016 ,
   CONSTRAINT `chk_registrations_price` CHECK (((`unit_price` >= 0) and (`total_amount` = (`unit_price` * `tickets`)))),
   CONSTRAINT `chk_registrations_tickets` CHECK ((`tickets` between 1 and 10))
+  */
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 INSERT INTO `registrations` (`id`, `event_id`, `full_name`, `email`, `phone`, `registered_at`, `tickets`, `unit_price`, `total_amount`) VALUES
 (1, 1, 'Alex Chen', 'alex.chen@example.com', '0400000101', '2026-10-02 06:37:32.241662', 2, '25.00', '50.00'),

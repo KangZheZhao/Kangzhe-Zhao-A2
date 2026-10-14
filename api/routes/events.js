@@ -74,7 +74,7 @@ router.post('/events/:id/registrations', asyncRoute(async (request, response) =>
     [id, registration.full_name, registration.email, registration.phone, registration.tickets, event.ticket_price, total]);
     const [saved] = await connection.execute('SELECT * FROM registrations WHERE id = ?', [result.insertId]);
     await connection.commit();
-    response.location(`/api/events/${id}`).status(201).json({ registration: saved[0], event_name: event.name, message: 'Your registration is confirmed.' });
+    response.location(`${request.app.locals.basePath}/api/events/${id}`).status(201).json({ registration: saved[0], event_name: event.name, message: 'Your registration is confirmed.' });
   } catch (error) {
     await connection.rollback();
     if (error.code === 'ER_DUP_ENTRY') throw new ApiError(409, 'This email address is already registered for this event.');
@@ -89,7 +89,7 @@ router.get('/admin/events/:id', asyncRoute(async (request, response) => response
 router.post('/admin/events', asyncRoute(async (request, response) => {
   const event = validateEvent(request.body);
   const [result] = await pool.execute(`INSERT INTO events (${eventFields.join(', ')}) VALUES (${eventFields.map(() => '?').join(', ')})`, eventFields.map(key => event[key]));
-  response.location(`/api/admin/events/${result.insertId}`).status(201).json(await eventDetail(result.insertId, true));
+  response.location(`${request.app.locals.basePath}/api/admin/events/${result.insertId}`).status(201).json(await eventDetail(result.insertId, true));
 }));
 router.put('/admin/events/:id', asyncRoute(async (request, response) => {
   const id = requireId(request.params.id);

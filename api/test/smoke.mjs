@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
-require('dotenv').config({ path: path.resolve(import.meta.dirname, '../.env') });
+require('dotenv').config({ path: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../.env') });
 
 const base = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
 

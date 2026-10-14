@@ -89,7 +89,7 @@
       const request = vm.id ? Api.put('/api/admin/events/' + vm.id, data) : Api.post('/api/admin/events', data);
       request.then(function (event) {
         vm.id = String(event.id); unpack(event);
-        window.history.replaceState(null, '', '/admin/event.html?id=' + vm.id);
+        window.history.replaceState(null, '', Display.path('/admin/event.html?id=' + vm.id));
         vm.message = 'Event saved.'; form.$setPristine(); form.$setUntouched();
       }).catch(function (error) {
         vm.error = error.message; vm.fields = error.fields;

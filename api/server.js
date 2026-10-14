@@ -1,10 +1,24 @@
 'use strict';
 const path = require('node:path');
+const fs = require('node:fs');
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 const express = require('express');
 const pool = require('./event_db');
 const { ApiError, validDate, positiveId, sydneyNow, asyncRoute } = require('./lib/validation');
 const app = express();
+const deploymentPath = (process.env.APP_BASE_PATH || '').replace(/\/+$/, '');
+if (deploymentPath && !/^\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(deploymentPath)) {
+  throw new Error('APP_BASE_PATH must be a URL path such as /scg-a3.');
+}
+app.locals.basePath = deploymentPath;
+if (deploymentPath) app.use((request, response, next) => {
+  if (request.url === deploymentPath || request.url.startsWith(deploymentPath + '?')) {
+    return response.redirect(308, deploymentPath + '/' + request.url.slice(deploymentPath.length));
+  }
+  // SCU Passenger may forward the public prefix or strip it before invoking Node.
+  if (request.url.startsWith(deploymentPath + '/')) request.url = request.url.slice(deploymentPath.length);
+  next();
+});
 app.disable('x-powered-by');
 app.set('query parser', 'simple');
 app.use((request, response, next) => {
@@ -26,15 +40,31 @@ app.use((request, response, next) => {
 app.use(express.json({ limit: '32kb', strict: true }));
 app.get('/api/health', asyncRoute(async (_request, response) => {
   await pool.query('SELECT 1');
-  response.json({ status: 'ok', version: '2.0.0' });
+  response.json({ status: 'ok', version: require('./package.json').version });
 }));
 app.use('/api', require('./routes/events'));
 app.use('/api', require('./routes/categories'));
 app.use('/api', require('./routes/weather'));
 app.use('/api', (_request, _response, next) => next(new ApiError(404, 'API endpoint not found.')));
+app.get('/admin', (request, response, next) => {
+  if (request.path.endsWith('/')) return next();
+  const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
+  response.redirect(308, deploymentPath + '/admin/' + query);
+});
+// Cache each page at startup, with a shared application base for links and API requests.
+for (const [folder, names] of [['clientside', ['index', 'search', 'event', 'registration', 'about']],
+  ['adminside', ['index', 'event', 'categories']]]) {
+  for (const name of names) {
+    const pagePath = (folder === 'adminside' ? '/admin/' : '/') + name + '.html';
+    const html = fs.readFileSync(path.join(__dirname, '..', folder, name + '.html'), 'utf8')
+      .replace('<base href="/">', '<base href="' + deploymentPath + '/">');
+    app.get(name === 'index' ? [pagePath, folder === 'adminside' ? '/admin/' : '/'] : pagePath,
+      (_request, response) => response.type('html').send(html));
+  }
+}
 app.use('/admin', express.static(path.join(__dirname, '../adminside')));
 app.use(express.static(path.join(__dirname, '../clientside')));
-app.use((_request, response) => response.status(404).send('Page not found. Return to the event calendar at /.'));
+app.use((_request, response) => response.status(404).send('Page not found. Open the event calendar at ' + deploymentPath + '/.'));
 app.use((error, _request, response, _next) => {
   let status = error.status || 500;
   let message = error.message;

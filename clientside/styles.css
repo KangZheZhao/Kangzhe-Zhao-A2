@@ -10,7 +10,7 @@
   --line: #dfe7df;
   --shadow: 0 18px 45px rgba(24, 49, 35, .07);
 }
-@font-face { font-family: 'Barlow Condensed'; src: url('/assets/BarlowCondensed-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Barlow Condensed'; src: url('assets/BarlowCondensed-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--paper); color: var(--body); font: 16px/1.6 'Helvetica Neue', Arial, sans-serif; }
