@@ -6,7 +6,7 @@ AI assistance produced parts of this reference implementation and its documentat
 
 ## Run the project
 
-Use Node.js 20.11 or later and MySQL 8.0.16 or later. Verification used MySQL 8.4.8. Keep `api`, `clientside` and `adminside` beside one another.
+Use Node.js 18.20.8 or later and MySQL 5.7.44 or later for a fresh database import. Verification used Node.js 18.20.8 and MySQL 8.4.8. MySQL 8.0.16+ enforces the named CHECK constraints; MySQL 5.7 relies on API validation while retaining foreign keys and the event/email unique key. Keep `api`, `clientside` and `adminside` beside one another. The separate A2 migration still requires MySQL 8.0.16+.
 
 1. Create an empty database, for example `charityevents_a3_dev`, with `utf8mb4` character encoding. Import **one** SQL file into the selected database:
    - `database/charityevents_db.sql` is the tested export of the final schema and data: 10 events and 10 fictional registrations.
@@ -74,6 +74,8 @@ python scripts/package-submission.py --username username
 ```
 
 The placeholder files are `delivery/usernameA3-clientside.zip`, `delivery/usernameA3-adminside.zip` and `delivery/usernameA3-api.zip`. Extract all three into the same parent folder. The API archive includes project documentation, database export and tests. `.env`, dependencies, local database files and A2 archives are omitted.
+
+For hosting, add `--runtime-only --username YOUR_ACCOUNT`. This produces the same application in three account-named ZIPs and a separate `YOUR_ACCOUNTA3-manifest.json`, without project notes, helper scripts, tests or the A2 migration. Import `api/charityevents_db.sql` into a fresh database. Set `APP_BASE_PATH=/scg-a3` for that public URL prefix, or leave it empty at the domain root. Page navigation, assets, API requests and redirects use the configured base.
 
 Each student still needs to deploy the same project in their own SCU cPanel, provide genuine team work on a private GitHub repository, record their own demonstration, and complete the confidential peer form. This local reference does not supply those personal or hosted results.
 

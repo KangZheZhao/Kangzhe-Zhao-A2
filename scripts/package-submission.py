@@ -47,6 +47,8 @@ def digest(data):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--username', default='username')
+    parser.add_argument('--runtime-only', action='store_true',
+                        help='Package only the application, its assets and the fresh-import schema')
     args = parser.parse_args()
     if not re.fullmatch(r'[A-Za-z0-9_-]{1,80}', args.username):
         parser.error('Username must contain letters, digits, underscores or hyphens.')
@@ -55,14 +57,20 @@ def main():
     if linked(output):
         raise ValueError('The delivery directory must not be a link.')
 
+    api_files = collect('api', {'.js', '.mjs', '.cjs', '.json', '.sql'})
+    if args.runtime_only:
+        api_files = [file for file in api_files
+                     if not {'test', 'migrations'}.intersection(file.relative_to(ROOT / 'api').parts)]
+    else:
+        api_files += (collect('scripts', {'.js', '.mjs', '.py', '.ps1'}) + collect('docs', {'.md'}) +
+                      collect('database', {'.sql'}) + collect('verification', {'.md', '.json', '.jpg'}) +
+                      collect('reference', {'.md', '.pdf', '.docx'}) + collect('submission', {'.txt'}) +
+                      [ROOT / 'README.md', ROOT / '交付说明.md'])
+    api_files.append(ROOT / 'api/.env.example')
     groups = {
         'clientside': collect('clientside', {'.html', '.css', '.js', '.jpg', '.ttf', '.txt', '.md'}),
         'adminside': collect('adminside', {'.html', '.css', '.js'}),
-        'api': collect('api', {'.js', '.mjs', '.cjs', '.json', '.sql'}) +
-               collect('scripts', {'.js', '.mjs', '.py', '.ps1'}) + collect('docs', {'.md'}) +
-               collect('database', {'.sql'}) + collect('verification', {'.md', '.json', '.jpg'}) +
-               collect('reference', {'.md', '.pdf', '.docx'}) + collect('submission', {'.txt'}) +
-               [ROOT / 'README.md', ROOT / '交付说明.md', ROOT / 'api/.env.example'],
+        'api': api_files,
     }
     # Check for this local account's password without printing or storing it.
     local_env = ROOT / 'api/.env'
@@ -71,8 +79,9 @@ def main():
         for line in local_env.read_text(encoding='utf-8-sig').splitlines():
             if line.startswith('DB_PASSWORD='):
                 secret = line.partition('=')[2].strip().strip('"\'').encode()
-    manifest = {'version': '2.0.0', 'builtAt': datetime.now(timezone.utc).isoformat(),
-                'username': args.username, 'packages': []}
+    version = json.loads((ROOT / 'api/package.json').read_text(encoding='utf-8'))['version']
+    manifest = {'version': version, 'builtAt': datetime.now(timezone.utc).isoformat(),
+                'username': args.username, 'profile': 'runtime' if args.runtime_only else 'source', 'packages': []}
     for group, files in groups.items():
         archive = output / f'{args.username}A3-{group}.zip'
         entries = []
@@ -94,11 +103,13 @@ def main():
         manifest['packages'].append({'file': archive.name, 'sha256': digest(archive.read_bytes()),
                                      'bytes': archive.stat().st_size, 'files': len(entries), 'entries': entries})
         print(f'{archive.name}: {len(entries)} files; ZIP integrity passed')
-    for source, name in [(ROOT / 'database/charityevents_db.sql', 'charityevents_db.sql'),
-                         (ROOT / 'reference/Peer Evaluation form.docx', 'Peer Evaluation form.docx'),
-                         (ROOT / '交付说明.md', '交付说明.md')]:
-        shutil.copyfile(source, output / name)
-    (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    if not args.runtime_only:
+        for source, name in [(ROOT / 'database/charityevents_db.sql', 'charityevents_db.sql'),
+                             (ROOT / 'reference/Peer Evaluation form.docx', 'Peer Evaluation form.docx'),
+                             (ROOT / '交付说明.md', '交付说明.md')]:
+            shutil.copyfile(source, output / name)
+    manifest_name = f'{args.username}A3-manifest.json' if args.runtime_only else 'manifest.json'
+    (output / manifest_name).write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':
