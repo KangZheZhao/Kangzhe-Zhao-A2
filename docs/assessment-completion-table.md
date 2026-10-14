@@ -13,7 +13,7 @@ This completed table records implementation and submission readiness. The tutor 
 | Public website | 30% | Angular pages retrieve events and categories through typed HttpClient services. The registration page shows the selected event, validates details and quantity, checks terms, submits a booking and shows confirmation. Event details show latest registrations and the event-day forecast. | Deployments recorded for kzhao11 and tzhou14; full TypeScript workspace and production files included. |
 | Staff website | 30% | Angular staff pages list all event statuses, create and edit validated events, show booking contacts, manage categories and block deletion of booked events. The interface uses blue sidebar navigation and calendar/list views. | Staff deployments recorded for both accounts; staff TypeScript sources and production files included. |
 | Concepts, comments, GitHub and video | 10% | API/database documentation explains bound SQL, parent-row locking, capacity checks, UTC timestamps, price snapshots and stale-edit protection. Genuine local version history is present. | The team repository URL, marker access and personal demonstration video link still need to be supplied. Maximum video length: 15 minutes. |
-| Teamwork | 15% | Each member's original evaluation has six criteria, two rating columns, workload allocation and feedback questions. | Actual names, individual contributions, ratings and feedback are required before the forms can be completed. |
+| Teamwork | 15% | The original evaluation has six criteria, two rating columns, workload allocation and feedback questions. A project-specific feedback draft is supplied separately. | Names, workload allocation, ratings and totals remain blank for each member to complete. |
 
 ## Detailed requirement checks
 
@@ -34,7 +34,7 @@ This completed table records implementation and submission readiness. The tutor 
 | SQL and project documentation | Complete | Final SQL export, README, API and database notes |
 | Private GitHub and progress evidence | Link/access verification pending | Supply the accessible team repository URL containing A3 progress |
 | Personal demonstration video | Pending link | SCU OneDrive shareable link; maximum 15 minutes |
-| Confidential peer evaluation | Member information pending | Each member sends their own completed form privately to the tutor |
+| Confidential peer evaluation | Separate Word draft supplied | Each member fills the personal fields, checks the feedback and sends their own form privately to the tutor |
 
 The development bootstrap SQL and the final exported SQL have different purposes. Submit the packaged final export for assessment. The recorded hosted databases contain 11 registrations; the final packaged export contains 10 sample registrations.
 
