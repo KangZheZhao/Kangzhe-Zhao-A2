@@ -3,7 +3,7 @@
   const app = angular.module('charitySite');
   app.controller('AdminListController', ['Api', 'Display', function (Api, Display) {
     const vm = this;
-    vm.display = Display; vm.events = []; vm.state = ''; vm.query = '';
+    vm.display = Display; vm.events = []; vm.state = ''; vm.query = ''; vm.sort = 'event_date';
     vm.load = function () {
       vm.loading = true; vm.error = '';
       return Api.get('/api/admin/events').then(function (rows) { vm.events = rows; })

@@ -1,6 +1,6 @@
 {
   "name": "prog2002-a3-charity-events-api",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "private": true,
   "description": "Charity event registration, administration and website server",
   "main": "server.js",
