@@ -17,7 +17,7 @@
   <div class="container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="index.html">Home</a><span aria-hidden="true">/</span><a href="search.html">Events</a
-      ><span aria-hidden="true">/</span><span>{{vm.event.name || 'Details'}}</span>
+      ><span aria-hidden="true">/</span><span>{{vm.event?.name || 'Details'}}</span>
     </nav>
     @if (vm.loading) {
     <p class="status-message" role="status">Loading event details…</p>

@@ -1,19 +1,24 @@
 {
-  "version": "2.0.2",
-  "builtAt": "2026-10-14T05:22:45.946636+00:00",
+  "version": "3.0.1",
+  "builtAt": "2026-10-14T11:20:44.703949+00:00",
   "username": "tzhou14",
   "profile": "runtime",
   "packages": [
     {
       "file": "tzhou14A3-clientside.zip",
-      "sha256": "2b66ed4443c3b9b956231f44467a4a727093dfde1a9e0441fd7dc9ce25e4bced",
-      "bytes": 2128578,
+      "sha256": "22de21f804a3bacf08b7ad2a8b004c2dde3eb8b8f9725b31c42d5105d73400e7",
+      "bytes": 2179153,
       "files": 20,
       "entries": [
         {
+          "path": "clientside/3rdpartylicenses.txt",
+          "sha256": "eba869d3fee70dc953a436fa032618a46df0c7a53460c2bc242b521a2298ab7d",
+          "bytes": 19400
+        },
+        {
           "path": "clientside/about.html",
-          "sha256": "36f48e774b5537d4ed377e084092d85c962071c1cc9c44aa7ae986c09eaf698d",
-          "bytes": 3992
+          "sha256": "33d919a38381845137c0f2d65004ed1886014ec48f69f67fc2f7f59c31b7b939",
+          "bytes": 922
         },
         {
           "path": "clientside/assets/art-gallery.jpg",
@@ -66,89 +71,99 @@
           "bytes": 6287
         },
         {
+          "path": "clientside/build-manifest.json",
+          "sha256": "d1f5b9027194e1c434c632b7bc1d377acbcf89f6fa5af1aa4db3ab035966db34",
+          "bytes": 118
+        },
+        {
           "path": "clientside/event.html",
-          "sha256": "6892e7f16392cbcedc819dffd03c2934d368000113f2c5ac28b99f18b57ed3fe",
-          "bytes": 6736
+          "sha256": "3eb78e6253c48338d4ce4a373a46b49abe52658d3b1d7b776fb8add59411abd4",
+          "bytes": 930
         },
         {
           "path": "clientside/index.html",
-          "sha256": "e5fc9d17802c0d82d48b0784b71d2eaf833969766c1888da9a4419d510f90f82",
-          "bytes": 5610
+          "sha256": "b2c0f2cfd5e6bb59caa7bee29454454d1f5615c6afcc6fe96cc562ac5721e881",
+          "bytes": 921
         },
         {
-          "path": "clientside/js/app.js",
-          "sha256": "5c2357e215b0f052cd9c2d5edc588cb6acb414723b8438b17a8b6367bdbd4f39",
-          "bytes": 9496
+          "path": "clientside/main-4645SWND.js",
+          "sha256": "ae9865aa8e42e5060f8082d64b8385ca468b896b1c2228bf1b7a3c9e7f95fca3",
+          "bytes": 354594
+        },
+        {
+          "path": "clientside/polyfills-6ISPNSXF.js",
+          "sha256": "ec6a265b48881798350d0f97891b538b43945015eb03394c42b42e9366bd2ed2",
+          "bytes": 35677
         },
         {
           "path": "clientside/registration.html",
-          "sha256": "37332fceb03e7ed9435f0874dee0594e2cf94e7c1687e07851d656b8effd0fd6",
-          "bytes": 7993
+          "sha256": "b38364726e5b595d1f56165c1e85b3acd012d179d41b085b5b47a6a5ad26c2dc",
+          "bytes": 938
         },
         {
           "path": "clientside/search.html",
-          "sha256": "a24d1d33e0fc605b3d6231a0db3674bee5fa9a130a6de2874f37297bdf023efb",
-          "bytes": 5137
+          "sha256": "5b474fdf0aa397ffd8b44dfe4b1d326d11f40bacc998ff43192dcff023c23571",
+          "bytes": 928
         },
         {
           "path": "clientside/styles.css",
           "sha256": "b7558f020d2f5ea328698a183d1f1736ca483f0f83ae63501ec2b4640044af35",
           "bytes": 25411
-        },
-        {
-          "path": "clientside/vendor/angular.min.js",
-          "sha256": "396dc1a03d6cc02e9c51a80246e0db53c5c8df9bd07287e3b51bce4a29dab355",
-          "bytes": 177368
-        },
-        {
-          "path": "clientside/vendor/ANGULARJS-LICENSE.txt",
-          "sha256": "f64ba8a51fa64d7f4616e88d0850eca2aa43c4ca73a798ff92f744012d0ff4df",
-          "bytes": 1074
-        },
-        {
-          "path": "clientside/vendor/CREDITS.md",
-          "sha256": "9c6541569df003e0b83bcae6c3b2c04b8baf30a399522061e0130df97cad5f91",
-          "bytes": 462
         }
       ]
     },
     {
       "file": "tzhou14A3-adminside.zip",
-      "sha256": "4025ae92f577ab0f8fafe35e167a865f37567190775ec5196361d7e35de62a97",
-      "bytes": 13913,
-      "files": 5,
+      "sha256": "649f4280e6294c55f7c9d4230f2ca7b21e377354b7eba52a6814a989434e36bc",
+      "bytes": 128369,
+      "files": 8,
       "entries": [
+        {
+          "path": "adminside/3rdpartylicenses.txt",
+          "sha256": "eba869d3fee70dc953a436fa032618a46df0c7a53460c2bc242b521a2298ab7d",
+          "bytes": 19400
+        },
         {
           "path": "adminside/admin.css",
           "sha256": "2bbbcaedda89297083c313a98c38cb06e73a395c01a577befe3c3a73a3e7ee02",
           "bytes": 16968
         },
         {
-          "path": "adminside/admin.js",
-          "sha256": "843d353a71b185d07f5e267ca31a15a76599488c88f739df359b9f87d3bdbdb0",
-          "bytes": 7816
+          "path": "adminside/build-manifest.json",
+          "sha256": "b24297ed1321e2e55432f2470350b118d9891f6191d32691329381cd052d75c5",
+          "bytes": 118
         },
         {
           "path": "adminside/categories.html",
-          "sha256": "1d3302598b6c7f53ae7466c034b4da90fa076dad2b185382cf3e95fa89e2787d",
-          "bytes": 4835
+          "sha256": "da13236ad04d903e03840f34b4577f5031dbbcd88feb4279e6cb7791e5678e17",
+          "bytes": 930
         },
         {
           "path": "adminside/event.html",
-          "sha256": "70d298cf4bc271a940cd94e210e5a96d5165a17f5e13c6f2d546a18061260526",
-          "bytes": 12039
+          "sha256": "15aabcb586df75fa2e69862dc22d23ab65fb68de7545b8a481994ba3631bbd27",
+          "bytes": 929
         },
         {
           "path": "adminside/index.html",
-          "sha256": "61a1a7a8343e57c6f5b98d554b67b1b6bc6914726ad253ad398f27951f30d602",
-          "bytes": 7370
+          "sha256": "ebac80876907fc1102ae52fcbd0b880c2a7292d8076c334b397ed4dda2ba5b32",
+          "bytes": 885
+        },
+        {
+          "path": "adminside/main-MS3CJTE6.js",
+          "sha256": "e262f7276c74220a2ad7bf917c9fe8d3d74ba4ea17fb95460f815db8713ec123",
+          "bytes": 353543
+        },
+        {
+          "path": "adminside/polyfills-6ISPNSXF.js",
+          "sha256": "ec6a265b48881798350d0f97891b538b43945015eb03394c42b42e9366bd2ed2",
+          "bytes": 35677
         }
       ]
     },
     {
       "file": "tzhou14A3-api.zip",
-      "sha256": "02e62fd56195ab84ada4cd616468511a4b9da5127b1b332d96dd100e3b0bb372",
-      "bytes": 24229,
+      "sha256": "1972b75fa27b5f4389a6f0fb058341691b39753ded93f579eb43155d44c73b07",
+      "bytes": 24237,
       "files": 11,
       "entries": [
         {
@@ -178,12 +193,12 @@
         },
         {
           "path": "api/package-lock.json",
-          "sha256": "cd0a74a385c340e8bd729f8832552bbf6beff0d89298b83bb72dba8f6576d5fd",
+          "sha256": "e1e0eef8a483eafdbcdff6fb6f5951c260123c7dd6d62f00610ce081012e2bf0",
           "bytes": 35645
         },
         {
           "path": "api/package.json",
-          "sha256": "f9e8ce6938f7ca68822a7cfe80942c7d0bb9678f603c85804fc2dcddaaea4943",
+          "sha256": "f90623d9adbf24e2388cbc991eac980b9947b94f69b38c52f47bb659da9142e9",
           "bytes": 704
         },
         {
@@ -203,8 +218,8 @@
         },
         {
           "path": "api/server.js",
-          "sha256": "6f05f74b789205559953e107050c04924f89016ca26b9384d091259e53df432e",
-          "bytes": 5911
+          "sha256": "aaf03d9929eb5c83194ab86d5310f1ba0fa7808f66ab25b6848959591fd0ff50",
+          "bytes": 6018
         }
       ]
     }

@@ -1,6 +1,6 @@
 # Sydney Community Giving - A3 reference
 
-Current release: **3.0.0**, with **Angular 22.2.2 + TypeScript 6.0.3** on both websites. See [the build and verification runbook](docs/angular22-build-runbook.md) for current source, commands and assessment evidence.
+Current release: **3.0.1**, with **Angular 22.2.2 + TypeScript 6.0.3** on both websites. See [the build and verification runbook](docs/angular22-build-runbook.md) for current source, commands and assessment evidence.
 
 This version extends the A2 charity event site with ticket registration and staff event management. Express serves both websites and the JSON API from one origin. MySQL stores events and bookings. Both websites are compiled from a local Angular 22.2.2 and TypeScript 6.0.3 workspace.
 

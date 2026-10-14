@@ -1,4 +1,4 @@
-# Angular 22 migration: version 3.0.0
+# Angular 22 migration: version 3.0.1
 
 The later teacher announcement supplied on 14 October 2026 asks for HTML, TypeScript, CSS, Node.js, Angular 22+ and a weather API. It supersedes the older brief's AngularJS suggestion for this technical requirement. This version implements that stack on both the public and staff websites.
 
@@ -29,10 +29,10 @@ The browser runs the Angular frontend. Express serves its static files and JSON 
 - The site's existing visual identity and independent staff layout are retained.
 - MySQL tables, foreign keys, duplicate-email rules, stored ticket prices and transactional protection are retained.
 - Open-Meteo remains a real external request with correct venue coordinates, date/timezone, forecast horizon and failure messages.
-- Local checks: 11 Angular tests; 8 API/data/deployment tests under Node 18.20.8; 19 additional MySQL/API integration checks.
+- Local checks: 14 Angular tests; 8 API/data/deployment tests under Node 18.20.8; 19 additional MySQL/API integration checks.
 
 Tests use dedicated local databases and fictitious contacts. Production deployment must compare every database table's complete row digest and the private environment file before and after the update. Do not re-import the SQL or replace the private environment file during this migration.
 
 ## Assessment evidence
 
-The technical implementation is not a mark guarantee. Private GitHub access/progress, each student's explanation/video, genuine teamwork evidence and confidential peer evaluations still need the students' own evidence. Historical verification records describe their original versions; use this runbook and the dated 3.0.0 deployment record for the current build.
+The technical implementation is not a mark guarantee. Private GitHub access/progress, each student's explanation/video, genuine teamwork evidence and confidential peer evaluations still need the students' own evidence. Historical verification records describe their original versions; use this runbook and the dated 3.0.1 deployment record for the current build.

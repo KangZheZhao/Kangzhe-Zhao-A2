@@ -32,7 +32,7 @@ export class EventComponent {
   fields: Record<string, string> = {};
   display!: Display;
   id: string | null = null;
-  event!: Event;
+  event: Event | null = null;
   weather: Forecast = { available: false };
   weatherLoading = false;
   weatherError = '';

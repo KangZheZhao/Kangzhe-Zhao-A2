@@ -1,6 +1,6 @@
 {
   "name": "scg-angular-web",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "scripts": {
     "build": "ng build site && ng build staff && node scripts/publish.mjs",
