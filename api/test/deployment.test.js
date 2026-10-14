@@ -38,10 +38,11 @@ test('all hosted pages, navigation and bundled resources remain inside the appli
     assert.equal(response.status, 200, route);
     assert.match(response.headers.get('content-type'), /text\/html/);
     const html = await response.text();
-    assert.match(html, /<base href="\/hosted-demo\/">/);
+    const expectedBase = '/hosted-demo/' + (route.startsWith('/admin') ? 'admin/' : '');
+    assert.ok(html.includes('<base href="' + expectedBase + '">'), route);
     for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
       if (match[1].includes('{{') || match[1].startsWith('#')) continue;
-      const url = new URL(match[1], origin + '/hosted-demo/');
+      const url = new URL(match[1], origin + expectedBase);
       if (url.origin !== origin) continue;
       assert.ok(url.pathname.startsWith('/hosted-demo/'), match[1]);
       resources.add(url.pathname + url.search);
@@ -53,7 +54,7 @@ test('all hosted pages, navigation and bundled resources remain inside the appli
     await response.arrayBuffer();
   }
   const forwardedWithoutPrefix = await fetch(origin + '/admin/event.html');
-  assert.match(await forwardedWithoutPrefix.text(), /<base href="\/hosted-demo\/">/);
+  assert.match(await forwardedWithoutPrefix.text(), /<base href="\/hosted-demo\/admin\/">/);
 });
 
 test('similar prefixes and private application files do not resolve to public content', async () => {

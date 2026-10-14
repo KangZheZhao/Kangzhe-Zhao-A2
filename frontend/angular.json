@@ -1,0 +1,81 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "analytics": false
+  },
+  "projects": {
+    "site": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/site/main.ts",
+            "index": "entry-pages/site/index.html",
+            "outputPath": "dist/site",
+            "tsConfig": "tsconfig.app.json",
+            "polyfills": [
+              "zone.js"
+            ],
+            "styles": [],
+            "assets": [],
+            "outputHashing": "all",
+            "optimization": true,
+            "sourceMap": false,
+            "extractLicenses": true,
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "600kB",
+                "maximumError": "1MB"
+              }
+            ]
+          }
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "buildTarget": "site:build",
+            "tsConfig": "tsconfig.spec.json",
+            "watch": false
+          }
+        }
+      }
+    },
+    "staff": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/staff/main.ts",
+            "index": "entry-pages/staff/index.html",
+            "outputPath": "dist/staff",
+            "tsConfig": "tsconfig.app.json",
+            "polyfills": [
+              "zone.js"
+            ],
+            "styles": [],
+            "assets": [],
+            "outputHashing": "all",
+            "optimization": true,
+            "sourceMap": false,
+            "extractLicenses": true,
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "600kB",
+                "maximumError": "1MB"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

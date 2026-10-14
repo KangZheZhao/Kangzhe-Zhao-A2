@@ -1,0 +1,17 @@
+[
+  {
+    "page": "categories",
+    "controller": "CategoriesController",
+    "alias": "vm"
+  },
+  {
+    "page": "event",
+    "controller": "AdminEventController",
+    "alias": "vm"
+  },
+  {
+    "page": "index",
+    "controller": "AdminListController",
+    "alias": "vm"
+  }
+]

@@ -1,0 +1,27 @@
+[
+  {
+    "page": "about",
+    "controller": "AboutController",
+    "alias": "vm"
+  },
+  {
+    "page": "event",
+    "controller": "EventController",
+    "alias": "vm"
+  },
+  {
+    "page": "index",
+    "controller": "HomeController",
+    "alias": "vm"
+  },
+  {
+    "page": "registration",
+    "controller": "RegistrationController",
+    "alias": "vm"
+  },
+  {
+    "page": "search",
+    "controller": "SearchController",
+    "alias": "vm"
+  }
+]

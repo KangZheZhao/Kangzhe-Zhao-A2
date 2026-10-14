@@ -1,0 +1,204 @@
+<a class="skip-link" localAnchor="#main">Skip to content</a>
+<header class="workspace-rail">
+  <a class="workspace-brand" href="./" aria-label="Sydney Community Giving staff home"
+    ><span class="workspace-mark" aria-hidden="true">SCG</span
+    ><span
+      >Sydney<br />
+      Community Giving</span
+    ></a
+  >
+  <p class="rail-label">Event operations</p>
+  <nav class="workspace-nav" aria-label="Staff navigation">
+    <a href="./" aria-current="page"><span aria-hidden="true">▦</span>Event calendar</a>
+    <a href="event.html"><span aria-hidden="true">＋</span>Create event</a>
+    <a href="categories.html"><span aria-hidden="true">◇</span>Categories</a>
+  </nav>
+  <div class="rail-note">
+    <span class="rail-dot" aria-hidden="true"></span><strong>Sydney, NSW</strong>
+    <p>All event times are Sydney local time.</p>
+  </div>
+  <a class="rail-public" href="../index.html"
+    >Open public website <span aria-hidden="true">↗</span></a
+  >
+</header>
+<div class="workspace-body">
+  <div class="workspace-top">
+    <span>Staff workspace</span><a class="mobile-public" href="../index.html">Public website ↗</a
+    ><span>Calendar / Events</span>
+  </div>
+
+  <main id="main" class="admin-main">
+    <div class="admin-heading">
+      <div>
+        <h1>Event calendar</h1>
+        <p>The dates, bookings and details behind every fundraiser.</p>
+      </div>
+      <a class="button button-primary" href="event.html"
+        ><span aria-hidden="true">＋</span> Create event</a
+      >
+    </div>
+    @if (!vm.loading) {
+    <div class="calendar-overview">
+      <div>
+        <span class="overview-icon" aria-hidden="true">▦</span>
+        <p><strong>{{vm.count()}}</strong><span>Events on the calendar</span></p>
+      </div>
+      <div>
+        <span class="overview-icon" aria-hidden="true">◉</span>
+        <p><strong>{{vm.ticketCount()}}</strong><span>Tickets booked</span></p>
+      </div>
+      <p class="overview-note">Past and suspended events stay here with their registrations.</p>
+    </div>
+    } @if (vm.loading) {
+    <p class="status-message" role="status">Loading events…</p>
+    } @if (vm.error) {
+    <div class="status-message status-error" role="alert">
+      <span>{{vm.error}}</span> <button class="text-button" (click)="vm.load()">Reload list</button>
+    </div>
+    } @if (vm.message) {
+    <p class="status-message status-success" role="status">{{vm.message}}</p>
+    } @if (vm.pendingDelete) {
+    <section class="confirm-strip" aria-label="Confirm deletion">
+      <p>
+        Delete <strong>{{vm.pendingDelete.name}}</strong>? Events with registrations cannot be
+        deleted.
+      </p>
+      <button class="button button-danger" (click)="vm.deleteEvent()" [disabled]="vm.deleting">
+        {{vm.deleting ? 'Deleting…' : 'Confirm delete'}}</button
+      ><button
+        class="button button-secondary"
+        (click)="vm.pendingDelete = null"
+        [disabled]="vm.deleting"
+      >
+        Cancel
+      </button>
+    </section>
+    }
+    <section class="calendar-panel" aria-label="Calendar listings">
+      <div class="status-tabs" aria-label="Filter events by status">
+        <button
+          type="button"
+          aria-pressed="{{vm.state === &#x27;&#x27;}}"
+          (click)="vm.state = &#x27;&#x27;"
+        >
+          All events <span>{{vm.count()}}</span></button
+        ><button
+          type="button"
+          aria-pressed="{{vm.state === &#x27;Active&#x27;}}"
+          (click)="vm.state = &#x27;Active&#x27;"
+        >
+          Active <span>{{vm.count('Active')}}</span></button
+        ><button
+          type="button"
+          aria-pressed="{{vm.state === &#x27;Suspended&#x27;}}"
+          (click)="vm.state = &#x27;Suspended&#x27;"
+        >
+          Suspended <span>{{vm.count('Suspended')}}</span></button
+        ><button
+          type="button"
+          aria-pressed="{{vm.state === &#x27;Past&#x27;}}"
+          (click)="vm.state = &#x27;Past&#x27;"
+        >
+          Past <span>{{vm.count('Past')}}</span>
+        </button>
+      </div>
+      <div class="admin-toolbar">
+        <div class="field search-field">
+          <label for="event-query">Find an event</label
+          ><input
+            id="event-query"
+            type="search"
+            placeholder="Search by name, suburb or category"
+            [(ngModel)]="vm.query"
+            name="event-query"
+          />
+        </div>
+        <div class="field sort-field">
+          <label for="event-sort">Sort by</label
+          ><select id="event-sort" [(ngModel)]="vm.sort" name="event-sort">
+            <option value="event_date">Event date</option>
+            <option value="name">Event name</option>
+          </select>
+        </div>
+        <button class="text-button" (click)="vm.query = &#x27;&#x27;; vm.state = &#x27;&#x27;">
+          Clear filters
+        </button>
+      </div>
+      <div class="agenda-columns" aria-hidden="true">
+        <span>Event &amp; venue</span><span>Bookings</span><span>Ticket price</span
+        ><span>Manage</span>
+      </div>
+      <div class="event-agenda" role="list" aria-label="Charity events">
+        @for (event of (vm.visibleEvents()); track event.id) {
+        <article class="agenda-event" role="listitem">
+          <div class="agenda-details">
+            <div class="date-stamp" aria-hidden="true">
+              <strong>{{event.event_date | date:'dd'}}</strong
+              ><span>{{event.event_date | date:'MMM'}}</span>
+            </div>
+            <div class="agenda-copy">
+              <span
+                class="state-label"
+                [ngClass]="{&#x27;state-past&#x27;: event.status === &#x27;Past&#x27;, &#x27;state-suspended&#x27;: event.status === &#x27;Suspended&#x27;}"
+                >{{event.status}}</span
+              >
+              <h2><a href="event.html?id={{event.id}}">{{event.name}}</a></h2>
+              <p>{{event.category_name}} <span aria-hidden="true">/</span> {{event.suburb}}</p>
+              <time [attr.datetime]="event.event_date"
+                >{{vm.display.date(event.event_date)}} ·
+                {{event.start_time}}–{{event.end_time}}</time
+              >
+            </div>
+          </div>
+          <div class="agenda-bookings">
+            <strong>{{event.tickets_booked}} <span>/ {{event.ticket_capacity}}</span></strong
+            ><meter
+              min="0"
+              max="{{event.ticket_capacity}}"
+              value="{{event.tickets_booked}}"
+              aria-label="Tickets booked for {{event.name}}"
+            ></meter
+            ><span
+              >{{event.registration_count}} {{event.registration_count === 1 ? 'registration' :
+              'registrations'}}</span
+            >
+          </div>
+          <div class="agenda-price">
+            <span class="mobile-label">Ticket price</span>{{event.ticket_price === 0 ? 'Free' :
+            vm.display.money(event.ticket_price)}}
+          </div>
+          <div class="row-actions">
+            <a class="edit-link" aria-label="Edit {{event.name}}" href="event.html?id={{event.id}}"
+              >Edit event</a
+            ><button
+              class="text-button danger-text"
+              aria-label="Delete {{event.name}}"
+              (click)="vm.askDelete(event)"
+            >
+              Delete
+            </button>
+          </div>
+        </article>
+        }
+      </div>
+      @if (!vm.loading && !vm.error && (!visibleEvents || !vm.visibleEvents().length)) {
+      <div class="empty-state">
+        <h2>No events match.</h2>
+        <p>Try another search or clear the filters to see the calendar.</p>
+        <button
+          class="button button-secondary"
+          (click)="vm.query = &#x27;&#x27;; vm.state = &#x27;&#x27;"
+        >
+          Clear filters
+        </button>
+      </div>
+      } @if (!vm.loading && !vm.error) {
+      <div class="calendar-foot">
+        <span>{{vm.visibleEvents().length || 0}} of {{vm.count()}} events</span
+        ><span>Open an event to view its guest list.</span>
+      </div>
+      }
+    </section>
+  </main>
+  <footer class="workspace-footer">Sydney Community Giving <span>Event operations</span></footer>
+</div>

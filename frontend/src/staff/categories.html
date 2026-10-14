@@ -1,0 +1,135 @@
+<a class="skip-link" localAnchor="#main">Skip to content</a>
+<header class="workspace-rail">
+  <a class="workspace-brand" href="./" aria-label="Sydney Community Giving staff home"
+    ><span class="workspace-mark" aria-hidden="true">SCG</span
+    ><span
+      >Sydney<br />
+      Community Giving</span
+    ></a
+  >
+  <p class="rail-label">Event operations</p>
+  <nav class="workspace-nav" aria-label="Staff navigation">
+    <a href="./"><span aria-hidden="true">▦</span>Event calendar</a>
+    <a href="event.html"><span aria-hidden="true">＋</span>Create event</a>
+    <a href="categories.html" aria-current="page"><span aria-hidden="true">◇</span>Categories</a>
+  </nav>
+  <div class="rail-note">
+    <span class="rail-dot" aria-hidden="true"></span><strong>Sydney, NSW</strong>
+    <p>All event times are Sydney local time.</p>
+  </div>
+  <a class="rail-public" href="../index.html"
+    >Open public website <span aria-hidden="true">↗</span></a
+  >
+</header>
+<div class="workspace-body">
+  <div class="workspace-top">
+    <span>Staff workspace</span><a class="mobile-public" href="../index.html">Public website ↗</a
+    ><span>Calendar / Categories</span>
+  </div>
+
+  <main id="main" class="admin-main">
+    <div class="container">
+      <div class="admin-heading">
+        <div>
+          <p class="section-overline">Staff · Calendar categories</p>
+          <h1>Event categories</h1>
+          <p>Keep the category names useful for people searching the calendar.</p>
+        </div>
+      </div>
+      @if (vm.error) {
+      <p class="status-message status-error" role="alert">{{vm.error}}</p>
+      }@if (vm.message) {
+      <p class="status-message status-success" role="status">{{vm.message}}</p>
+      } @if (vm.pendingDelete) {
+      <section class="confirm-strip">
+        <p>
+          Delete <strong>{{vm.pendingDelete.name}}</strong>? A category used by an event cannot be
+          deleted.
+        </p>
+        <button class="button button-danger" (click)="vm.deleteCategory()" [disabled]="vm.deleting">
+          {{vm.deleting ? 'Deleting…' : 'Confirm delete'}}</button
+        ><button
+          class="button button-secondary"
+          (click)="vm.pendingDelete = null"
+          [disabled]="vm.deleting"
+        >
+          Cancel
+        </button>
+      </section>
+      }
+      <div class="category-layout">
+        <section class="editor-section">
+          <h2>Categories</h2>
+          @if (vm.loading) {
+          <p role="status">Loading categories…</p>
+          }
+          <div class="category-directory">
+            @for (category of (vm.categories); track category.id) {
+            <article class="category-item">
+              <span class="category-symbol" aria-hidden="true">◇</span>
+              <div class="category-copy">
+                <h3>{{category.name}}</h3>
+                <p>
+                  {{category.event_count}} {{category.event_count === 1 ? 'event uses' : 'events
+                  use'}} this category
+                </p>
+              </div>
+              <div class="row-actions">
+                <button
+                  class="text-button"
+                  aria-label="Edit category {{category.name}}"
+                  (click)="vm.edit(category, categoryForm)"
+                >
+                  Edit</button
+                ><button
+                  class="text-button danger-text"
+                  aria-label="Delete category {{category.name}}"
+                  (click)="vm.pendingDelete = category; vm.error = &#x27;&#x27;; vm.message = &#x27;&#x27;"
+                >
+                  Delete
+                </button>
+              </div>
+            </article>
+            }
+          </div>
+          @if (!vm.loading && !vm.categories.length) {
+          <p class="empty-state">Add a category before creating events.</p>
+          }<button class="text-button" (click)="vm.load()">Reload categories</button>
+        </section>
+        <section class="editor-section">
+          <h2>{{vm.form.id ? 'Edit category' : 'New category'}}</h2>
+          <form
+            name="categoryForm"
+            novalidate
+            #categoryForm="ngForm"
+            (ngSubmit)="vm.save(categoryForm)"
+          >
+            <div class="field">
+              <label for="category-name">Category name</label
+              ><input
+                id="category-name"
+                name="name"
+                type="text"
+                maxlength="80"
+                required
+                [(ngModel)]="vm.form.name"
+              />@if (categoryForm.submitted && categoryForm.controls['name']?.invalid) {
+              <p class="field-error">Enter a category name.</p>
+              }
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="button button-primary" [disabled]="vm.saving">
+                {{vm.saving ? 'Saving…' : 'Save category'}}</button
+              >@if (vm.form.id) {
+              <button type="button" class="text-button" (click)="vm.cancel(categoryForm)">
+                Cancel edit
+              </button>
+              }
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="workspace-footer">Sydney Community Giving <span>Event operations</span></footer>
+</div>

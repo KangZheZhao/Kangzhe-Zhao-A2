@@ -51,15 +51,16 @@ app.get('/admin', (request, response, next) => {
   const query = request.url.includes('?') ? request.url.slice(request.url.indexOf('?')) : '';
   response.redirect(308, deploymentPath + '/admin/' + query);
 });
-// Cache each page at startup, with a shared application base for links and API requests.
+// Resolve both Angular router bases from the actual Passenger application path.
 for (const [folder, names] of [['clientside', ['index', 'search', 'event', 'registration', 'about']],
   ['adminside', ['index', 'event', 'categories']]]) {
   for (const name of names) {
     const pagePath = (folder === 'adminside' ? '/admin/' : '/') + name + '.html';
+    const base = deploymentPath + (folder === 'adminside' ? '/admin/' : '/');
     const html = fs.readFileSync(path.join(__dirname, '..', folder, name + '.html'), 'utf8')
-      .replace('<base href="/">', '<base href="' + deploymentPath + '/">');
+      .replace(/<base\s+href="[^"]*"\s*\/?\s*>/, '<base href="' + base + '">');
     app.get(name === 'index' ? [pagePath, folder === 'adminside' ? '/admin/' : '/'] : pagePath,
-      (_request, response) => response.type('html').send(html));
+      (_request, response) => response.set('Cache-Control', 'no-cache').type('html').send(html));
   }
 }
 app.use('/admin', express.static(path.join(__dirname, '../adminside')));

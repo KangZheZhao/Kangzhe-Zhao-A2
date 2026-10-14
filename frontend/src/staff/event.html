@@ -1,0 +1,474 @@
+<a class="skip-link" localAnchor="#main">Skip to content</a>
+<header class="workspace-rail">
+  <a class="workspace-brand" href="./" aria-label="Sydney Community Giving staff home"
+    ><span class="workspace-mark" aria-hidden="true">SCG</span
+    ><span
+      >Sydney<br />
+      Community Giving</span
+    ></a
+  >
+  <p class="rail-label">Event operations</p>
+  <nav class="workspace-nav" aria-label="Staff navigation">
+    <a href="./" aria-current="{{vm.id ? &#x27;page&#x27; : false}}"
+      ><span aria-hidden="true">▦</span>Event calendar</a
+    >
+    <a href="event.html" aria-current="{{vm.id ? false : &#x27;page&#x27;}}"
+      ><span aria-hidden="true">＋</span>Create event</a
+    >
+    <a href="categories.html"><span aria-hidden="true">◇</span>Categories</a>
+  </nav>
+  <div class="rail-note">
+    <span class="rail-dot" aria-hidden="true"></span><strong>Sydney, NSW</strong>
+    <p>All event times are Sydney local time.</p>
+  </div>
+  <a class="rail-public" href="../index.html"
+    >Open public website <span aria-hidden="true">↗</span></a
+  >
+</header>
+<div class="workspace-body">
+  <div class="workspace-top">
+    <span>Staff workspace</span><a class="mobile-public" href="../index.html">Public website ↗</a
+    ><span>Calendar / Event details</span>
+  </div>
+
+  <main id="main" class="admin-main">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="./">Events</a><span aria-hidden="true">/</span
+        ><span>{{vm.id ? 'Edit event' : 'New event'}}</span>
+      </nav>
+      <div class="admin-heading">
+        <div>
+          <p class="section-overline">Staff · Event details</p>
+          <h1>{{vm.id ? 'Edit event' : 'New event'}}</h1>
+          <p>
+            {{vm.id ? 'Update this listing and review its registrations.' : 'Add a fundraiser to the
+            public calendar.'}}
+          </p>
+        </div>
+        <a class="text-button" href="./">Back to events</a>
+      </div>
+      @if (vm.loading) {
+      <p class="status-message" role="status">Loading event details…</p>
+      }@if (vm.loadError) {
+      <div class="status-message status-error" role="alert">
+        <p>{{vm.loadError}}</p>
+        <button class="text-button" (click)="vm.load()">Try again</button>
+      </div>
+      } @if (vm.event) {
+      <div>
+        <form name="eventForm" novalidate #eventForm="ngForm" (ngSubmit)="vm.save(eventForm)">
+          @if (vm.error) {
+          <div class="status-message status-error" role="alert">
+            <p>{{vm.error}}</p>
+            @if (vm.error.indexOf('Reload') !== -1) {
+            <button type="button" class="text-button" (click)="vm.load()">Reload event</button> }
+          </div>
+          }@if (vm.message) {
+          <p class="status-message status-success" role="status">{{vm.message}}</p>
+          }
+          <div class="admin-edit-layout">
+            <div>
+              <section class="editor-section">
+                <h2>About the event</h2>
+                <p class="muted">All fields are required. Event times use Sydney local time.</p>
+                <div class="field">
+                  <label for="name">Event name</label
+                  ><input
+                    id="name"
+                    name="name"
+                    type="text"
+                    maxlength="160"
+                    required
+                    [(ngModel)]="vm.event.name"
+                    (ngModelChange)="vm.fields.name = &#x27;&#x27;"
+                  />@if (vm.fields.name) {
+                  <p class="field-error">{{vm.fields.name}}</p>
+                  }
+                </div>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="category_id">Category</label
+                    ><select
+                      id="category_id"
+                      name="category_id"
+                      required
+                      [(ngModel)]="vm.event.category_id"
+                      (ngModelChange)="vm.fields.category_id = &#x27;&#x27;"
+                    >
+                      <option value="">Choose a category</option>
+                      @for (category of vm.categories; track $index) {
+                      <option [ngValue]="category.id">{{category.name}}</option>
+                      }
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="organisation_id">Organiser</label
+                    ><select
+                      id="organisation_id"
+                      name="organisation_id"
+                      required
+                      [(ngModel)]="vm.event.organisation_id"
+                      (ngModelChange)="vm.fields.organisation_id = &#x27;&#x27;"
+                    >
+                      <option value="">Choose an organiser</option>
+                      @for (organisation of vm.organisations; track $index) {
+                      <option [ngValue]="organisation.id">{{organisation.name}}</option>
+                      }
+                    </select>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="short_description">Short description</label
+                  ><input
+                    id="short_description"
+                    name="short_description"
+                    type="text"
+                    maxlength="255"
+                    required
+                    [(ngModel)]="vm.event.short_description"
+                    (ngModelChange)="vm.fields.short_description = &#x27;&#x27;"
+                  />@if (vm.fields.short_description) {
+                  <p class="field-error">{{vm.fields.short_description}}</p>
+                  }
+                </div>
+                <div class="field">
+                  <label for="purpose">Fundraising purpose</label
+                  ><input
+                    id="purpose"
+                    name="purpose"
+                    type="text"
+                    maxlength="255"
+                    required
+                    [(ngModel)]="vm.event.purpose"
+                    (ngModelChange)="vm.fields.purpose = &#x27;&#x27;"
+                  />@if (vm.fields.purpose) {
+                  <p class="field-error">{{vm.fields.purpose}}</p>
+                  }
+                </div>
+                <div class="field">
+                  <label for="description">What to expect</label
+                  ><textarea
+                    id="description"
+                    name="description"
+                    rows="5"
+                    maxlength="8000"
+                    required
+                    [(ngModel)]="vm.event.description"
+                    (ngModelChange)="vm.fields.description = &#x27;&#x27;"
+                  ></textarea
+                  >@if (vm.fields.description) {
+                  <p class="field-error">{{vm.fields.description}}</p>
+                  }
+                </div>
+              </section>
+              <section class="editor-section">
+                <h2>Date and venue</h2>
+                <div class="form-grid form-grid-three">
+                  <div class="field">
+                    <label for="dateModel">Date</label
+                    ><input
+                      id="dateModel"
+                      name="dateModel"
+                      type="date"
+                      required
+                      [(ngModel)]="vm.event.dateModel"
+                      (ngModelChange)="vm.fields.dateModel = &#x27;&#x27;"
+                    />@if (vm.fields.dateModel) {
+                    <p class="field-error">{{vm.fields.dateModel}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="startModel">Starts</label
+                    ><input
+                      id="startModel"
+                      name="startModel"
+                      type="time"
+                      required
+                      [(ngModel)]="vm.event.startModel"
+                      (ngModelChange)="vm.fields.startModel = &#x27;&#x27;"
+                    />@if (vm.fields.startModel) {
+                    <p class="field-error">{{vm.fields.startModel}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="endModel">Ends</label
+                    ><input
+                      id="endModel"
+                      name="endModel"
+                      type="time"
+                      required
+                      [(ngModel)]="vm.event.endModel"
+                      (ngModelChange)="vm.fields.endModel = &#x27;&#x27;"
+                    />@if (vm.fields.endModel) {
+                    <p class="field-error">{{vm.fields.endModel}}</p>
+                    }
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="venue">Venue</label
+                  ><input
+                    id="venue"
+                    name="venue"
+                    type="text"
+                    maxlength="140"
+                    required
+                    [(ngModel)]="vm.event.venue"
+                    (ngModelChange)="vm.fields.venue = &#x27;&#x27;"
+                  />@if (vm.fields.venue) {
+                  <p class="field-error">{{vm.fields.venue}}</p>
+                  }
+                </div>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="suburb">Suburb</label
+                    ><input
+                      id="suburb"
+                      name="suburb"
+                      type="text"
+                      maxlength="100"
+                      required
+                      [(ngModel)]="vm.event.suburb"
+                      (ngModelChange)="vm.fields.suburb = &#x27;&#x27;"
+                    />@if (vm.fields.suburb) {
+                    <p class="field-error">{{vm.fields.suburb}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="city">City</label
+                    ><input
+                      id="city"
+                      name="city"
+                      type="text"
+                      maxlength="100"
+                      required
+                      [(ngModel)]="vm.event.city"
+                      (ngModelChange)="vm.fields.city = &#x27;&#x27;"
+                    />@if (vm.fields.city) {
+                    <p class="field-error">{{vm.fields.city}}</p>
+                    }
+                  </div>
+                </div>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="latitude">Latitude</label
+                    ><input
+                      id="latitude"
+                      name="latitude"
+                      type="number"
+                      min="-90"
+                      max="90"
+                      step="any"
+                      required
+                      [(ngModel)]="vm.event.latitude"
+                      (ngModelChange)="vm.fields.latitude = &#x27;&#x27;"
+                    />@if (vm.fields.latitude) {
+                    <p class="field-error">{{vm.fields.latitude}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="longitude">Longitude</label
+                    ><input
+                      id="longitude"
+                      name="longitude"
+                      type="number"
+                      min="-180"
+                      max="180"
+                      step="any"
+                      required
+                      [(ngModel)]="vm.event.longitude"
+                      (ngModelChange)="vm.fields.longitude = &#x27;&#x27;"
+                    />@if (vm.fields.longitude) {
+                    <p class="field-error">{{vm.fields.longitude}}</p>
+                    }
+                  </div>
+                </div>
+                <p class="muted">
+                  Venue coordinates let visitors check the event-day weather forecast.
+                </p>
+              </section>
+              <section class="editor-section">
+                <h2>Tickets and fundraising</h2>
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="ticket_price">Ticket price (AUD)</label
+                    ><input
+                      id="ticket_price"
+                      name="ticket_price"
+                      type="number"
+                      min="0"
+                      max="99999999.99"
+                      step="0.01"
+                      required
+                      [(ngModel)]="vm.event.ticket_price"
+                      (ngModelChange)="vm.fields.ticket_price = &#x27;&#x27;"
+                    />@if (vm.fields.ticket_price) {
+                    <p class="field-error">{{vm.fields.ticket_price}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="ticket_capacity">Ticket capacity</label
+                    ><input
+                      id="ticket_capacity"
+                      name="ticket_capacity"
+                      type="number"
+                      min="1"
+                      max="100000"
+                      step="1"
+                      required
+                      [(ngModel)]="vm.event.ticket_capacity"
+                      (ngModelChange)="vm.fields.ticket_capacity = &#x27;&#x27;"
+                    />@if (vm.fields.ticket_capacity) {
+                    <p class="field-error">{{vm.fields.ticket_capacity}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="goal_amount">Fundraising target (AUD)</label
+                    ><input
+                      id="goal_amount"
+                      name="goal_amount"
+                      type="number"
+                      min="0.01"
+                      max="99999999.99"
+                      step="0.01"
+                      required
+                      [(ngModel)]="vm.event.goal_amount"
+                      (ngModelChange)="vm.fields.goal_amount = &#x27;&#x27;"
+                    />@if (vm.fields.goal_amount) {
+                    <p class="field-error">{{vm.fields.goal_amount}}</p>
+                    }
+                  </div>
+                  <div class="field">
+                    <label for="raised_amount">Raised so far (AUD)</label
+                    ><input
+                      id="raised_amount"
+                      name="raised_amount"
+                      type="number"
+                      min="0"
+                      max="99999999.99"
+                      step="0.01"
+                      required
+                      [(ngModel)]="vm.event.raised_amount"
+                      (ngModelChange)="vm.fields.raised_amount = &#x27;&#x27;"
+                    />@if (vm.fields.raised_amount) {
+                    <p class="field-error">{{vm.fields.raised_amount}}</p>
+                    }
+                  </div>
+                </div>
+                <p class="muted">
+                  Existing bookings keep their original ticket price. Capacity must cover tickets
+                  already booked.
+                </p>
+              </section>
+            </div>
+            <aside class="editor-aside">
+              <section class="editor-section">
+                <h2>Listing photo</h2>
+                <div class="field">
+                  <label for="image_file">Event photo</label
+                  ><select
+                    id="image_file"
+                    name="image_file"
+                    required
+                    [(ngModel)]="vm.event.image_file"
+                    (ngModelChange)="vm.fields.image_file = &#x27;&#x27;"
+                  >
+                    @for (image of vm.images; track $index) {
+                    <option [ngValue]="image.file">{{image.name}}</option>
+                    }
+                  </select>
+                </div>
+                <img
+                  class="editor-preview"
+                  alt="Selected listing photo"
+                  src="{{vm.display.image(vm.event)}}"
+                />
+              </section>
+              <section class="editor-section">
+                <h2>Visibility</h2>
+                <label class="checkbox-label"
+                  ><input
+                    type="checkbox"
+                    [(ngModel)]="vm.event.is_suspended"
+                    name="vm_event_is_suspended"
+                    (ngModelChange)="vm.fields.is_suspended = &#x27;&#x27;"
+                  /><span>Suspend this event</span></label
+                >
+                <p class="muted">
+                  Suspended events stay in this list and keep their bookings. They are hidden from
+                  the public calendar.
+                </p>
+                @if (vm.id) {
+                <p>
+                  {{vm.registrations.length}} registrations · {{vm.event.tickets_booked}} tickets
+                  booked
+                </p>
+                }@if (vm.id && !vm.event.is_suspended) {
+                <a href="../event.html?id={{vm.id}}">View public event</a> }
+              </section>
+            </aside>
+          </div>
+          <div class="editor-actions">
+            <button class="button button-primary" type="submit" [disabled]="vm.saving">
+              {{vm.saving ? 'Saving…' : 'Save event'}}</button
+            ><button
+              class="button button-secondary"
+              type="button"
+              (click)="vm.reset(eventForm)"
+              [disabled]="vm.saving"
+            >
+              Reset changes</button
+            ><a href="./">Back to events</a>
+          </div>
+        </form>
+        @if (vm.id) {
+        <section class="editor-section registrations-section">
+          <h2>Registrations</h2>
+          <p class="muted">Latest bookings first. Contact details are for staff use.</p>
+          @if (vm.registrations.length) {
+          <div class="table-scroll">
+            <table class="data-table">
+              <caption class="sr-only">
+                Event registrations and contact details
+              </caption>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>Registered</th>
+                  <th>Tickets</th>
+                  <th>Booking total</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (registration of (vm.registrations); track registration.id) {
+                <tr>
+                  <td>
+                    {{registration.full_name}}<span class="table-secondary"
+                      >SCG-{{registration.id}}</span
+                    >
+                  </td>
+                  <td>
+                    {{registration.email}}<span class="table-secondary"
+                      >{{registration.phone}}</span
+                    >
+                  </td>
+                  <td>{{vm.display.timestamp(registration.registered_at)}}</td>
+                  <td>{{registration.tickets}}</td>
+                  <td>{{vm.display.money(registration.total_amount)}}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+          }@if (!vm.registrations.length) {
+          <p class="empty-state">No registrations for this event yet.</p>
+          }
+        </section>
+        }
+      </div>
+      }
+    </div>
+  </main>
+  <footer class="workspace-footer">Sydney Community Giving <span>Event operations</span></footer>
+</div>

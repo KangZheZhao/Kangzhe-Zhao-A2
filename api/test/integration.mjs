@@ -145,7 +145,7 @@ try {
   });
   await check('all frontend pages and local dependencies are served', async () => {
     for (const url of ['/', '/search.html', '/event.html?id=1', '/registration.html?id=1', '/about.html',
-      '/admin/', '/admin/event.html', '/admin/categories.html', '/vendor/angular.min.js', '/booking.css']) {
+      '/admin/', '/admin/event.html', '/admin/categories.html', '/build-manifest.json', '/booking.css']) {
       assert.equal((await fetch(new URL(url, base))).status, 200, url);
     }
     assert.equal((await fetch(new URL('/api/.env', base))).status, 404);

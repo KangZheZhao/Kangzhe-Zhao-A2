@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
-SKIP = {'.git', '.local', 'node_modules', '__pycache__', 'archive', 'delivery', 'output'}
+SKIP = {'.git', '.local', 'node_modules', '__pycache__', 'archive', 'delivery', 'output', 'dist', '.angular', 'out-tsc'}
 
 
 def linked(path):
@@ -68,10 +68,14 @@ def main():
                       [ROOT / 'README.md', ROOT / '交付说明.md'])
     api_files.append(ROOT / 'api/.env.example')
     groups = {
-        'clientside': collect('clientside', {'.html', '.css', '.js', '.jpg', '.ttf', '.txt', '.md'}),
-        'adminside': collect('adminside', {'.html', '.css', '.js'}),
+        'clientside': collect('clientside', {'.html', '.css', '.js', '.json', '.jpg', '.ttf', '.txt', '.md'}),
+        'adminside': collect('adminside', {'.html', '.css', '.js', '.json', '.txt'}),
         'api': api_files,
     }
+    if not args.runtime_only:
+        frontend = collect('frontend', {'.ts', '.html', '.json', '.mjs'})
+        groups['clientside'] += frontend
+        groups['adminside'] += frontend
     # Check for this local account's password without printing or storing it.
     local_env = ROOT / 'api/.env'
     secret = None

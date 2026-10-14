@@ -1,39 +1,30 @@
 <!doctype html>
-<html lang="en-AU" ng-app="charitySite" ng-strict-di>
-<head>
-  <base href="/">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sydney Community Giving charity event calendar, bookings and event management.">
-  <title>Categories | Sydney Community Giving</title>
-  <meta name="robots" content="noindex">
-  <link rel="stylesheet" href="admin/admin.css?v=2.0.2">
-  <script src="vendor/angular.min.js" defer></script>
-  <script src="js/app.js" defer></script>
-  <script src="admin/admin.js?v=2.0.2" defer></script>
-</head>
-<body ng-controller="CategoriesController as vm" class="admin-body">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="workspace-rail">
-    <a class="workspace-brand" href="admin/" aria-label="Sydney Community Giving staff home"><span class="workspace-mark" aria-hidden="true">SCG</span><span>Sydney<br> Community Giving</span></a>
-    <p class="rail-label">Event operations</p>
-    <nav class="workspace-nav" aria-label="Staff navigation">
-      <a href="admin/"><span aria-hidden="true">▦</span>Event calendar</a>
-      <a href="admin/event.html"><span aria-hidden="true">＋</span>Create event</a>
-      <a href="admin/categories.html" aria-current="page"><span aria-hidden="true">◇</span>Categories</a>
-    </nav>
-    <div class="rail-note"><span class="rail-dot" aria-hidden="true"></span><strong>Sydney, NSW</strong><p>All event times are Sydney local time.</p></div>
-    <a class="rail-public" href="index.html">Open public website <span aria-hidden="true">↗</span></a>
-  </header>
-  <div class="workspace-body"><div class="workspace-top"><span>Staff workspace</span><a class="mobile-public" href="index.html">Public website ↗</a><span>Calendar / Categories</span></div>
-  <noscript><p class="container status-message status-error">Turn on JavaScript to load events and use the forms.</p></noscript>
-  <main id="main" class="admin-main"><div class="container" ng-cloak>
-  <div class="admin-heading"><div><p class="section-overline">Staff · Calendar categories</p><h1>Event categories</h1><p>Keep the category names useful for people searching the calendar.</p></div></div><p class="status-message status-error" role="alert" ng-if="vm.error" ng-bind="vm.error"></p><p class="status-message status-success" role="status" ng-if="vm.message" ng-bind="vm.message"></p>
-  <section class="confirm-strip" ng-if="vm.pendingDelete"><p>Delete <strong ng-bind="vm.pendingDelete.name"></strong>? A category used by an event cannot be deleted.</p><button class="button button-danger" ng-click="vm.deleteCategory()" ng-disabled="vm.deleting">{{vm.deleting ? 'Deleting…' : 'Confirm delete'}}</button><button class="button button-secondary" ng-click="vm.pendingDelete = null" ng-disabled="vm.deleting">Cancel</button></section>
-  <div class="category-layout"><section class="editor-section"><h2>Categories</h2><p role="status" ng-if="vm.loading">Loading categories…</p><div class="category-directory"><article class="category-item" ng-repeat="category in vm.categories track by category.id"><span class="category-symbol" aria-hidden="true">◇</span><div class="category-copy"><h3 ng-bind="category.name"></h3><p>{{category.event_count}} {{category.event_count === 1 ? 'event uses' : 'events use'}} this category</p></div><div class="row-actions"><button class="text-button" ng-click="vm.edit(category, categoryForm)" aria-label="Edit category {{category.name}}">Edit</button><button class="text-button danger-text" ng-click="vm.pendingDelete = category; vm.error = ''; vm.message = ''" aria-label="Delete category {{category.name}}">Delete</button></div></article></div><p ng-if="!vm.loading && !vm.categories.length" class="empty-state">Add a category before creating events.</p><button class="text-button" ng-click="vm.load()">Reload categories</button></section>
-  <section class="editor-section"><h2>{{vm.form.id ? 'Edit category' : 'New category'}}</h2><form name="categoryForm" ng-submit="vm.save(categoryForm)" novalidate><div class="field"><label for="category-name">Category name</label><input id="category-name" name="name" type="text" ng-model="vm.form.name" maxlength="80" required><p class="field-error" ng-if="categoryForm.$submitted && categoryForm.name.$invalid">Enter a category name.</p></div><div class="form-actions"><button type="submit" class="button button-primary" ng-disabled="vm.saving">{{vm.saving ? 'Saving…' : 'Save category'}}</button><button type="button" class="text-button" ng-if="vm.form.id" ng-click="vm.cancel(categoryForm)">Cancel edit</button></div></form></section></div>
-</div></main>
-  <footer class="workspace-footer">Sydney Community Giving <span>Event operations</span></footer>
-  </div>
+<html lang="en-AU">
+  <head>
+    <base href="./" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Sydney Community Giving charity event calendar, bookings and event management."
+    />
+    <title>Categories | Sydney Community Giving</title>
+    <meta name="robots" content="noindex" />
+    <link rel="stylesheet" data-beasties-skip href="admin.css?v=3.0.0" />
+
+    <style>
+      app-root,
+      app-page,
+      app-event-card {
+        display: contents;
+      }
+    </style>
+  </head>
+  <body class="admin-body">
+    <app-root><p class="status-message" role="status">Loading…</p></app-root
+    ><noscript>Turn on JavaScript to load events and use the forms.</noscript>
+  <script src="polyfills-6ISPNSXF.js" type="module"></script>
+<script src="main-MS3CJTE6.js" type="module"></script>
 </body>
 </html>

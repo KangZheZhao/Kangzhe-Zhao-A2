@@ -7,3 +7,6 @@ output/
 *.zip
 !submission/*.zip
 .local/
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/

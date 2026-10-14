@@ -1,27 +1,30 @@
 <!doctype html>
-<html lang="en-AU" ng-app="charitySite" ng-strict-di>
-<head>
-  <base href="/">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Sydney Community Giving charity event calendar, bookings and event management.">
-  <title>About | Sydney Community Giving</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="booking.css">
+<html lang="en-AU">
+  <head>
+    <base href="./" />
 
-  <script src="vendor/angular.min.js" defer></script>
-  <script src="js/app.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Sydney Community Giving charity event calendar, bookings and event management."
+    />
+    <title>About | Sydney Community Giving</title>
+    <link rel="stylesheet" data-beasties-skip href="styles.css" />
+    <link rel="stylesheet" data-beasties-skip href="booking.css" />
 
-</head>
-<body ng-controller="AboutController as vm">
-  <a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container header-inner"><a class="brand" href="index.html" aria-label="Sydney Community Giving home"><span class="brand-mark" aria-hidden="true">SCG</span><span class="brand-name">Sydney<br>Community Giving</span></a><nav class="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="search.html">Events</a><a href="about.html" aria-current="page">About</a></nav><a class="header-cta" href="admin/">Staff area</a></div></header>
-  <noscript><p class="container status-message status-error">Turn on JavaScript to load events and use the forms.</p></noscript>
-  <main id="main">
-  <section class="about-hero"><div class="container about-hero-grid"><div class="about-hero-copy"><p class="section-overline">About Sydney Community Giving</p><h1>We put Sydney fundraisers on the calendar.</h1><div class="about-hero-bottom"><p>Runs, markets, gigs and dinners give people a way to back practical projects across the city.</p><a href="search.html">Explore the calendar</a></div></div><img class="about-hero-photo" src="assets/dinner.jpg" alt="A table set for a community dinner"></div></section>
-  <section class="about-story"><div class="container about-story-grid"><div class="about-story-copy"><p class="section-overline">The organisation</p><h2>What we put on</h2><p ng-cloak ng-if="vm.organisation" ng-bind="vm.organisation.mission"></p><div class="status-message status-error" ng-if="vm.error" role="alert" ng-cloak><p ng-bind="vm.error"></p><button class="text-button" ng-click="vm.load()">Try again</button></div><p>Every listing shows the venue, date, cause and fundraising progress. Book tickets from the event page, then find your name in the registration list.</p><p>Some events charge for entry; others are free. Check the price and what to expect before registering.</p></div><div class="about-image-stack"><img src="assets/community-run.jpg" alt="Runners in a city street"><img src="assets/dinner.jpg" alt="A community dinner table"></div></div></section>
-  <section class="cause-section"><div class="container cause-grid"><div><p class="section-overline">Where funds go</p><h2>Causes on the calendar</h2></div><ul><li>Food relief and family care packs</li><li>Youth mentoring and school supplies</li><li>Community housing and wellbeing</li><li>Creative learning and shared meals</li></ul></div></section>
-  <section class="about-contact"><div class="container contact-grid"><div><p class="section-overline">Plan a visit</p><h2>Next on the calendar</h2><p>Search by date, suburb or event type to see current and upcoming fundraisers.</p><a class="button button-primary" href="search.html">View upcoming events</a></div><img src="assets/art-gallery.jpg" alt="An art exhibition"></div></section>
-</main>
-  <footer class="site-footer"><div class="container footer-grid"><div><a class="footer-brand" href="index.html">Sydney Community Giving</a><p>Runs, markets, music and dinners across Sydney.</p></div><nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="search.html">Events</a><a href="about.html">About</a><a href="admin/">Staff area</a></nav><div><p>Sydney, NSW<br>Event times are Sydney local time.</p></div></div><div class="container footer-base"><span>© Sydney Community Giving</span></div></footer>
+    <style>
+      app-root,
+      app-page,
+      app-event-card {
+        display: contents;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root><p class="status-message" role="status">Loading…</p></app-root
+    ><noscript>Turn on JavaScript to load events and use the forms.</noscript>
+  <script src="polyfills-6ISPNSXF.js" type="module"></script>
+<script src="main-B6MY3AYE.js" type="module"></script>
 </body>
 </html>
